@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+//Set up api in our App.js
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-function App() {
+//Components
+import Movie from "./Components/Movie";
+
+const App = () => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    //grab information from moviedb API
+    //store our keys
+    //search for a movie
+    const fetchData = async () => {
+      const response = await axios({
+        method: "GET",
+        url: "https://api.themoviedb.org/3/trending/all/day?",
+        params: {
+          format: "json",
+          api_key: "9279e74f93d44d00c0b5afd5efff4065",
+        },
+      });
+      // TODO DELETE THIS RESPONSE22
+      const response22 = await axios({
+        method: "GET",
+        url: "https://api.themoviedb.org/3/configuration?api_key=9279e74f93d44d00c0b5afd5efff4065",
+      });
+      setMovies(response.data.results);
+      console.log("=====", response22);
+      console.log(response.data.results);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Testing Movie API</h1>
+      <main>
+        {movies.map((movie) => {
+          return <Movie movie={movie} />;
+        })}
+      </main>
     </div>
   );
-}
+};
 
 export default App;
