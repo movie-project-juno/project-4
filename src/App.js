@@ -21,7 +21,7 @@ const App = () => {
           api_key: "9279e74f93d44d00c0b5afd5efff4065",
         },
       });
-      // TODO DELETE THIS RESPONSE22
+      // TO DO DELETE THIS RESPONSE22 - using just to get image sizes
       const response22 = await axios({
         method: "GET",
         url: "https://api.themoviedb.org/3/configuration?api_key=9279e74f93d44d00c0b5afd5efff4065",
