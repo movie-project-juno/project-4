@@ -11,7 +11,7 @@ const App = () => {
   useEffect(() => {
     //grab information from moviedb API
     //store our keys
-    //search for a movie
+    //search for movies
     const fetchData = async () => {
       const response = await axios({
         method: "GET",
