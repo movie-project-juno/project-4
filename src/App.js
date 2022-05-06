@@ -1,7 +1,9 @@
-//Set up api in our App.js
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
 //Components
 import Movie from "./Components/Movie";
 
@@ -28,7 +30,6 @@ const App = () => {
       });
       setMovies(response.data.results);
       console.log("=====", response22);
-      console.log(response.data.results);
     };
     fetchData();
   }, []);
@@ -36,11 +37,13 @@ const App = () => {
   return (
     <div className="App">
       <h1>Testing Movie API</h1>
+      <Header />
       <main>
         {movies.map((movie) => {
           return <Movie movie={movie} />;
         })}
       </main>
+      <Footer />
     </div>
   );
 };
