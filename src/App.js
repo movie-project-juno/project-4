@@ -1,12 +1,11 @@
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+//Components
+import Movie from "./components/Movie";
+import SearchBar from "./components/SearchBar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-
-//Components
-import Movie from "./components/Movie";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import SearchBar from "./components/SearchBar";
 
 //Style
 
