@@ -1,0 +1,11 @@
+footer {
+    height: 300px;
+    width: 100%;
+    background-color: $primaryGreen;
+    display: flex;
+    align-items: center;
+    h5 {
+        @include bodyFont;
+       
+    }
+}

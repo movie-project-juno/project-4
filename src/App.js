@@ -2,10 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
 //Components
-import Movie from "./Components/Movie";
+import Movie from "./components/Movie";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
+
+//Style
+
+import "./styles/App.scss";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -36,9 +41,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Testing Movie API</h1>
       <Header />
-      <main>
+      <SearchBar />
+      <main className="wrapper container">
         {movies.map((movie) => {
           return <Movie movie={movie} />;
         })}
