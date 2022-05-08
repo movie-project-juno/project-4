@@ -45,7 +45,7 @@ const App = () => {
       <SearchBar />
       <main className="wrapper container">
         {movies.map((movie) => {
-          return <Movie movie={movie} />;
+          return <Movie movie={movie} key={movie.id} />;
         })}
       </main>
       <Footer />
