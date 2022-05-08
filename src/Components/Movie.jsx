@@ -1,7 +1,7 @@
 const Movie = ({ movie }) => {
   return (
     <section className="movieContainer">
-      <figure className="moviePoster" key={movie.id}>
+      <figure className="moviePoster">
         <img
           src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
           alt={movie.original_title}
