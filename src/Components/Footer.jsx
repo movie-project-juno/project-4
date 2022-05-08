@@ -1,7 +1,9 @@
 const Footer = () => {
   return (
     <footer>
-      <h5>Juno College 2022</h5>
+      <div className="wrapper">
+        <h5>Juno College 2022</h5>
+      </div>
     </footer>
   );
 };
