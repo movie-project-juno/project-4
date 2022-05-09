@@ -1,10 +1,16 @@
-import React, { useContext } from "react";
-
+import React, { useContext, useState } from "react";
 import { UserContext } from "../context";
+import MovieModal from "./MovieModal";
 //Imporrting movies from context
 const Movies = () => {
+  const [movie, setMovie] = useState({});
+  const [openModal, setOpenModal] = useState(false);
   const movies = useContext(UserContext);
   console.log(movies);
+  const toggleModal = (movie) => {
+    setMovie(movie);
+    setOpenModal(true);
+  };
   //Looping and rendering a list of movies
   const renderMovies = () => {
     return movies.map((movie) => (
@@ -23,22 +29,24 @@ const Movies = () => {
             <p>{movie.overview}</p>
           </div>
           <div className="buttons-container">
-            <button type="submit">Watch trailer</button>
-            <button type="submit">Share</button>
+            <button>Watch trailer</button>
+            <button onClick={() => toggleModal(movie)}>More</button>
 
-            <button type="submit">Add to List</button>
+            <button>Add to List</button>
           </div>
         </div>
       </article>
     ));
   };
-  //Displaying a list of movies and a modal for movie details
+  //Render movie list and modal
   return (
     <>
       {renderMovies()}
-      <div className="movieModal">
-        <div className="moviesModalContainer"></div>
-      </div>
+      <MovieModal
+        movie={movie}
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+      />
     </>
   );
 };
