@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 
 import { UserContext } from "../context";
-
+//Imporrting movies from context
 const Movies = () => {
   const movies = useContext(UserContext);
   console.log(movies);
-
+  //Looping and rendering a list of movies
   const renderMovies = () => {
     return movies.map((movie) => (
       <article key={movie.id} className="movieContainer">
@@ -32,7 +32,7 @@ const Movies = () => {
       </article>
     ));
   };
-
+  //Displaying a list of movies and a modal for movie details
   return (
     <>
       {renderMovies()}
