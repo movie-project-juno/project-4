@@ -1,14 +1,21 @@
+//Modules
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
+//Firebase DB
+import firebase from "./scripts/firebase";
+import { getDatabase, ref, onValue } from "firebase/database";
+
 //Components
-import Movie from "./Components/Movie";
+import Header from "./components/Header";
+import Movie from "./components/Movie";
+import Footer from "./components/Footer";
 
 const App = () => {
+  //States
   const [movies, setMovies] = useState([]);
+  const [lists, setLists] = useState([]);
 
   useEffect(() => {
     //grab information from moviedb API
@@ -34,13 +41,24 @@ const App = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // Variable to hold the DB
+    const database = getDatabase(firebase);
+    // Variables to store the references of the DB noves
+    const dbRef = ref(database);
+    // Grab info from a specific point (reference) in the DB
+    onValue(dbRef, (response) => {
+      console.log(response.val());
+    });
+  });
+
   return (
     <div className="App">
       <h1>Testing Movie API</h1>
       <Header />
-      <main>
+      <main className="wrapper container">
         {movies.map((movie) => {
-          return <Movie movie={movie} />;
+          return <Movie movie={movie} key={movie.id} />;
         })}
       </main>
       <Footer />
