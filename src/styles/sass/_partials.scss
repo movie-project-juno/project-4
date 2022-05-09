@@ -17,6 +17,9 @@ $primaryBlue: #B3D5DF;
 
 
 //Main
+body{
+    background-image: url(../../../public/images/background.png);
+}
 
 .wrapper {
     max-width: 1280px;
@@ -46,12 +49,64 @@ $primaryBlue: #B3D5DF;
             font-size: 48px;
             color: #B3D5DF;
         }
+        p{
+            @include bodyFont;
+            color: $primaryYellow;
+        }
     }
     .buttonsContainer {
         max-width: 90%;
         display: flex;
         justify-content: space-around;
         margin-top: 20px;
+    }
+}
+
+//Modal
+.movieModal{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    .moviesModalContainer{
+        position: relative;
+        width: 60%;
+        height: 40%;
+        min-width: 300px;
+        min-height: 400px;
+        background-color: white;
+        border: 1px solid black;
+        margin: auto;
+        .closeButton {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid black;
+        }
+        .modalDetails {
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            p{
+                color: black;
+
+            }
+        }
+        .modalContent {
+            width: 90%;
+            padding: 20px;
+            margin: auto;
+        }
     }
 }
 
