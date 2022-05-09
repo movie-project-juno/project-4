@@ -60,8 +60,10 @@ const App = () => {
         <section>
           <h2>Create a List</h2>
           <form action="submit">
+            <label htmlFor="newList">New List</label>
             <input
               type="text"
+              id="newList"
               onChange={(event) => {
                 createNewList(event);
               }}
