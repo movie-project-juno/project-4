@@ -23,11 +23,6 @@ const App = () => {
   const [lists, setLists] = useState([]);
   const [userListNameInput, setUserListNameInput] = useState("");
 
-  //States for User
-  const [users, setUsers] = useState({});
-  const [userNameInput, setUserNameInput] = useState("");
-  const [userPasswordInput, setUserPasswordInput] = useState("");
-
   useEffect(() => {
     // Variable to hold the DB
     const database = getDatabase(firebase);
@@ -35,66 +30,21 @@ const App = () => {
     const dbRef = ref(database);
     // Add Event Listener to Grab info from a specific point (dbRef) in the DB and save it to the State
     onValue(dbRef, (response) => {
-      // Variable to store the new State
-      const newUsersState = [
-        {
-          userName: "Guest",
-          password: "123",
-          lists: [
-            {
-              listName: "default",
-              moviesId: [1, 2, 3],
-            },
-            {
-              listName: "oscar",
-              moviesId: [4, 5, 6],
-            },
-          ],
-        },
-      ];
-      const newListState = [];
-      // Variable to store the query response
+      //Variable to store the new State
+      const newState = [];
+      //Variable to store the query response
       const data = response.val();
-
-      // // HARD CODED
-      const newUser1 = {
-        userName: "Theo",
-        password: "ASAP",
-        lists: [
-          {
-            listName: "default",
-            moviesId: [15, 25, 35],
-          },
-          {
-            listName: "thriller",
-            moviesId: [45, 55, 65],
-          },
-        ],
-      };
-      newUsersState.push(newUser1);
-      // // // HARD CODED ENG - DELETE
-
-      // Bring data from DB - Iterate data (for...in) to store objects into the newListState array
+      // //Iterate data (for...in) to store objects into the newState array
       for (let key in data) {
-        newListState.push({ key: key, name: data[key] });
+        newState.push({ key: key, name: data[key] });
       }
-      // Set the State through setLists
-      setUsers(newUsersState);
-      setLists(newListState);
 
-      console.log("inside:", newListState);
+      //Set the State through setLists
+      setLists(newState);
     });
   }, []);
 
-  console.log("outside users:", users);
-  console.log("outside lists:", lists);
-
   //Firebase Methods
-  //#region User
-
-  //#endregion User
-
-  //#region Lists
   //onChange in the Input element id=newList
   const handleNewListNameChange = (event) => {
     setUserListNameInput(event.target.value);
@@ -122,38 +72,12 @@ const App = () => {
     //Use remove() to a spacific node
     remove(dbRef);
   };
-  //#endregion Lists
 
   return (
     <div className="App">
       <UserContextProvider>
         <Header />
-        <section className="create-user">
-          <h2>Create new User</h2>
-          <form action="submit">
-            <label htmlFor="newUser">User name</label>
-            <input type="text" id="newUser" />
-            <label htmlFor="newUserPassword">Password</label>
-            <input type="text" id="newUserPassword" />
-            <button>Add user</button>
-          </form>
-          <ul>
-            {users.map((user) => {
-              return (
-                // activeUser.key = user.key ? {Show <li>} : <p>No user found</p>
-                <li key={user.key}>
-                  <p>
-                    {user.name} - {user.key} - {user.userName}
-                  </p>
-                  <button onClick={() => handleRemoveList(user.key)}>
-                    Remove
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-        <section className="create-new-list">
+        <section>
           <h2>Create a new List</h2>
           <form action="submit">
             <label htmlFor="newList">Add New List</label>
@@ -172,7 +96,7 @@ const App = () => {
               return (
                 <li key={list.key}>
                   <p>
-                    {list.name} - {list.key} - {users.userName}
+                    {list.name} - {list.key}
                   </p>
                   <button onClick={() => handleRemoveList(list.key)}>
                     Remove
