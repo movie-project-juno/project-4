@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 
 //Firebase DB
 import firebase from "./scripts/firebase";
-import { getDatabase, ref, onValue, push } from "firebase/database";
+import { getDatabase, ref, onValue, push, remove } from "firebase/database";
 
 //Components
 import Header from "./components/Header";
@@ -38,8 +38,8 @@ const App = () => {
       //Variable to store the query response
       const data = response.val();
       // //Iterate data (for...in) to store objects into the newState array
-      for (let item in data) {
-        newState.push(data[item]);
+      for (let key in data) {
+        newState.push({ key: key, name: data[key] });
       }
 
       //Set the State through setLists
@@ -48,7 +48,7 @@ const App = () => {
   }, []);
 
   //Firebase Methods
-  const createNewList = (event) => {
+  const handleNewListNameChange = (event) => {
     console.log(event.target.value);
     setUserListNameInput(event.target.value);
   };
@@ -67,6 +67,15 @@ const App = () => {
     setUserListNameInput("");
   };
 
+  const handleRemoveList = (listId) => {
+    // Variable for the DB
+    const database = getDatabase(firebase);
+    // Variable for the reference
+    const dbRef = ref(database, `/${listId}`);
+    //Use remove() to a spacific node
+    remove(dbRef);
+  };
+
   return (
     <div className="App">
       <UserContextProvider>
@@ -74,18 +83,31 @@ const App = () => {
         <section>
           <h2>Create a new List</h2>
           <form action="submit">
-            <label htmlFor="newList">New List</label>
+            <label htmlFor="newList">Add New List</label>
             <input
               type="text"
               id="newList"
               onChange={(event) => {
-                createNewList(event);
+                handleNewListNameChange(event);
               }}
               value={userListNameInput}
             />
-            <button onSubmit={submitNewListName}>Create</button>
+            <button onClick={submitNewListName}>Create</button>
           </form>
-          <p>{lists}</p>
+          <ul>
+            {lists.map((list) => {
+              return (
+                <li key={list.key}>
+                  <p>
+                    {list.name} - {list.key}
+                  </p>
+                  <button onClick={() => handleRemoveList(list.key)}>
+                    Remove
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
         </section>
         <SearchBar />
         <main className="wrapper container">
