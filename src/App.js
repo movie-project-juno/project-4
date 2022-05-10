@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 
 //Firebase DB
 import firebase from "./scripts/firebase";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, push } from "firebase/database";
 
 //Components
 import Header from "./components/Header";
@@ -31,16 +31,16 @@ const App = () => {
     const dbRef = ref(database);
     // Add Event Listener to Grab info from a specific point (dbRef) in the DB and save it to the State
     onValue(dbRef, (response) => {
-      console.log(response.val());
+      console.log("data from DB", response.val());
 
       //Variable to store the new State
       const newState = [];
       //Variable to store the query response
       const data = response.val();
       // //Iterate data (for...in) to store objects into the newState array
-      // for (let item in data) {
-      //   newState.push();
-      // }
+      for (let item in data) {
+        newState.push(data[item]);
+      }
 
       //Set the State through setLists
       setLists(newState);
@@ -53,12 +53,26 @@ const App = () => {
     setUserListNameInput(event.target.value);
   };
 
+  console.log("outside", lists);
+
+  const submitNewListName = (event) => {
+    event.preventDefault();
+    //Variable for the DB
+    const database = getDatabase(firebase);
+    // VAriable for the reference
+    const dbRef = ref(database);
+    //Push value to DB
+    push(dbRef, userListNameInput);
+    //Reset state to empty
+    setUserListNameInput("");
+  };
+
   return (
     <div className="App">
       <UserContextProvider>
         <Header />
         <section>
-          <h2>Create a List</h2>
+          <h2>Create a new List</h2>
           <form action="submit">
             <label htmlFor="newList">New List</label>
             <input
@@ -69,8 +83,9 @@ const App = () => {
               }}
               value={userListNameInput}
             />
-            <button>Create</button>
+            <button onSubmit={submitNewListName}>Create</button>
           </form>
+          <p>{lists}</p>
         </section>
         <SearchBar />
         <main className="wrapper container">
