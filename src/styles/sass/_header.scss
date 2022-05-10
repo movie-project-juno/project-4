@@ -2,8 +2,12 @@ header{
     font-family: "Josefin Sans", sans-serif;
     font-weight: 600;
     font-size: 48px;
+    color: $primaryYellow;
     height: 450px;
-    background-color: #ABBEBA;
+    background-image: url(../../../public/images/headerimg.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 600px;
     display: flex;
     align-items: center;
 }
