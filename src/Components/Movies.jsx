@@ -1,6 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
+
 import { UserContext } from "../context";
 import MovieModal from "./MovieModal";
+
 //Imporrting movies from context
 const Movies = () => {
   const [movie, setMovie] = useState({});
@@ -49,14 +51,14 @@ const Movies = () => {
   };
   //Render movie list and modal
   return (
-    <>
+    <main className="wrapper container">
       {renderMovies()}
       <MovieModal
         movie={movie}
         openModal={openModal}
         setOpenModal={setOpenModal}
       />
-    </>
+    </main>
   );
 };
 
