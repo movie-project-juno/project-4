@@ -11,7 +11,7 @@ import Lists from "./Components/Lists";
 import Movies from "./Components/Movies";
 import SearchBar from "./Components/SearchBar";
 import Users from "./Components/Users";
-import { UserContextProvider } from "./context";
+import { UserContextProvider } from "./context/apiMovies";
 import { UserDBContextProvider } from "./context/firebaseConnection";
 
 //Firebase DB
