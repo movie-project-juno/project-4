@@ -106,9 +106,7 @@ const Lists = () => {
         {lists.map((list) => {
           return (
             <li key={list.key}>
-              <p>
-                {list.name} - {list.key} - {users.userName}
-              </p>
+              <p>{`${list.name} - ${list.key} - ${users.userName}`}</p>
               <button onClick={() => handleRemoveList(list.key)}>Remove</button>
             </li>
           );
