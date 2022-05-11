@@ -1,6 +1,5 @@
 const MovieModal = ({ movie, openModal, setOpenModal }) => {
   //Displaying a modal with movie details
-  console.log(movie);
   return (
     <>
       {openModal ? (
@@ -18,15 +17,13 @@ const MovieModal = ({ movie, openModal, setOpenModal }) => {
               </figure>
               <div className="modalDetails">
                 <h3>{movie.name || movie.title}</h3>
-                <p>{movie.vote_average}</p>
+                <p>Rate: {movie.vote_average}</p>
                 <div className="modalText">
                   <p>{movie.overview}</p>
                 </div>
-                <div className="buttons-container">
-                  <button>Watch trailer</button>
-                  <button>More</button>
-
-                  <button>Add to List</button>
+                <div className="buttonsContainer">
+                  <button>Add</button>
+                  <button>Remove</button>
                 </div>
               </div>
             </article>
