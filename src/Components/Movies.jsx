@@ -25,6 +25,7 @@ const Movies = () => {
           <h2>{movie.original_title}</h2>
 
           <p>{movie.vote_average}</p>
+          <p>{movie.genre_ids[0]}</p>
           <div className="movieText">
             <p>{movie.overview}</p>
           </div>

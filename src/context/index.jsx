@@ -22,6 +22,8 @@ const UserContextProvider = ({ children }) => {
         },
       });
       setMovies(movies);
+      console.log(movies);
+
 
       // TO DO DELETE THIS RESPONSE22 - using just to get image sizes
       const response22 = await axios({
@@ -29,10 +31,30 @@ const UserContextProvider = ({ children }) => {
         url: "https://api.themoviedb.org/3/configuration?api_key=9279e74f93d44d00c0b5afd5efff4065",
       });
       console.log("=====", response22);
-    };
-
+    }
     fetchData();
   }, []);
+
+
+  useEffect (() => {
+    movies.forEach(movie => {
+      // console.log(movie.id)
+
+      const fetchGenres = async (movie_id) => {
+        const response = await axios({
+          method: "GET",
+          url: `https://api.themoviedb.org/3/movie/${movie_id}`,
+          params: {
+            format: "json",
+            api_key: "9279e74f93d44d00c0b5afd5efff4065",
+          },
+        });
+        console.log(response)
+      }
+      fetchGenres(movie.id);
+    })
+
+  }, [movies])
 
   return (
     // the Provider gives access to the context to its children

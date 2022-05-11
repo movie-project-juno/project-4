@@ -8,15 +8,16 @@ import firebase from "./scripts/firebase";
 import { getDatabase, ref, onValue } from "firebase/database";
 
 //Components
-import Header from "./components/Header";
-import Movies from "./components/Movies";
-import Footer from "./components/Footer";
-import SearchBar from "./components/SearchBar";
+import Header from "./Components/Header";
+import Movies from "./Components/Movies";
+import Footer from "./Components/Footer";
+import SearchBar from "./Components/SearchBar";
+import Genres from "./Components/Genres";
 import { UserContextProvider } from "./context";
 
 //Style
-import "./styles/App.scss";
-import CreateListForm from "./components/CreateListForm";
+import "./styles/App.css";
+import CreateListForm from "./Components/CreateListForm";
 
 const App = () => {
   //States
@@ -75,6 +76,7 @@ const App = () => {
         <SearchBar />
         <main className="wrapper container">
           <Movies />
+          <Genres />
         </main>
       </UserContextProvider>
       <Footer />
