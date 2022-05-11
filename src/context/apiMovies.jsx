@@ -23,8 +23,6 @@ const UserContextProvider = ({ children }) => {
         },
       });
       setMovies(movies);
-      console.log(movies);
-
 
       // TO DO DELETE THIS RESPONSE22 - using just to get image sizes
       const response22 = await axios({
