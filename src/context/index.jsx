@@ -7,6 +7,7 @@ const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
   // the value that will be given to the context
   const [movies, setMovies] = useState([]);
+  const [genres, setGenres] = useState([]);
 
   // fetch a user from a fake backend API
   useEffect(() => {
@@ -35,7 +36,6 @@ const UserContextProvider = ({ children }) => {
     fetchData();
   }, []);
 
-
   useEffect (() => {
     movies.forEach(movie => {
       // console.log(movie.id)
@@ -49,16 +49,18 @@ const UserContextProvider = ({ children }) => {
             api_key: "9279e74f93d44d00c0b5afd5efff4065",
           },
         });
-        console.log(response)
+        console.log(response);
+        setGenres(response.data.genres);
       }
       fetchGenres(movie.id);
     })
 
   }, [movies])
 
+
   return (
     // the Provider gives access to the context to its children
-    <UserContext.Provider value={movies}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ movies, genres }}>{children}</UserContext.Provider>
   );
 };
 
