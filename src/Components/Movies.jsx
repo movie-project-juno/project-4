@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 
-import { UserContext } from "../context";
+import { UserContext } from "../context/apiMovies";
 import MovieModal from "./MovieModal";
 
 //Imporrting movies from context
