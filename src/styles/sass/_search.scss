@@ -1,4 +1,4 @@
-.searchbar {
+.checkbox {
     background-color: #EADBC4;
     display: flex;
     height: 200px;
@@ -11,8 +11,8 @@
         display: flex;
         flex-direction: column;
         input{
-            width: 90%;
-            height: 45px;
+            width: 25px;
+            height: 25px;
             border: none;
             border-radius: 5px;
         }
