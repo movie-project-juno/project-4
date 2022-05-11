@@ -1,7 +1,8 @@
 //Colours
-$primaryGreen: #ABBEBA;
+$primaryRed: #8C0000;
 $primaryYellow: #EADBC4;
 $primaryBlue: #B3D5DF;
+$backgroundDark: #212020;
 
 @mixin headings {
     font-family: 'Josefin Sans', sans-serif;
@@ -14,6 +15,18 @@ $primaryBlue: #B3D5DF;
     font-weight: 400;
     font-size: 20px;
 }
+
+@mixin buttons {
+    @include bodyFont;
+                height: 40px;
+                width: 150px;
+                color: $primaryYellow;
+                font-weight: 600;
+                background-color: $primaryRed   ;
+                border: none;
+                cursor: pointer;
+                   }
+
 
 
 //Main
@@ -30,36 +43,74 @@ body{
     flex-wrap: wrap;
 }
 
-.movieContainer {
-    max-width: 50%;
-    display: flex;
+.movieContainer {    
+    flex: 1 1 250px;
+    margin: 15px 15px;
+    padding: 15px;
+    display: flex;  
+    background-color: $backgroundDark;
   .moviePoster {
-        width: 100%;
+        width: 35%;
         height: auto;
         display: flex;
+        justify-content: center;
+        align-items: center;
         img{
             object-fit: contain;
         }
     }
     .movieDetails {
-        max-width: 90%;
-        h2 {
-            font-family: "Josefin Sans", sans-serif;
-            font-weight: 600;
-            font-size: 48px;
-            color: #B3D5DF;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding-left: 10px;
+        .title{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            h2 {
+                font-family: "Josefin Sans", sans-serif;
+                font-weight: 600;
+                font-size: 28px;
+                color: #B3D5DF;
+            }
         }
+        
         p{
             @include bodyFont;
             color: $primaryYellow;
         }
+        .buttonsContainer {
+            max-width: 90%;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            button {
+                @include buttons;
+                &:hover,
+                &:focus,
+                &:active{
+                    display: inline-block;
+                    vertical-align: middle;
+                    transform: translateZ(0);
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 5);
+                    backface-visibility: hidden;
+                    -moz-osx-font-smoothing: grayscale;
+                    transition-duration: 0.3s;
+                    transition-property: transform;
+                    transform: scale(1.1);
+                }
+                  }
+        }
+        .iconAdd {
+            color: $primaryYellow;
+        }
+       
     }
-    .buttonsContainer {
-        max-width: 90%;
-        display: flex;
-        justify-content: space-around;
-        margin-top: 20px;
-    }
+    
 }
 
 //Modal
@@ -69,15 +120,15 @@ body{
     width: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.65);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     .moviesModalContainer{
         position: relative;
         width: 60%;
-        height: 40%;
+        height: 750px;
         min-width: 300px;
         min-height: 400px;
-        background-color: white;
+        background-color: $backgroundDark;
         border: 1px solid black;
         margin: auto;
         .closeButton {
@@ -86,27 +137,60 @@ body{
             align-items: center;
             justify-content: center;
             position: absolute;
+            color: $primaryYellow;
             top: 30px;
             right: 30px;
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            border: 1px solid black;
+            border: 1px solid $primaryYellow;
+            background-color: $primaryRed;
         }
-        .modalDetails {
-            display: flex;
-            flex-direction: column;
-            width: 90%;
-            p{
-                color: black;
-
-            }
+        
         }
         .modalContent {
             width: 90%;
+            height: 90%;
             padding: 20px;
             margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .modalDetails {
+                display: flex;
+                flex-direction: column;
+                width: 90%;
+                p, h3{
+                    color: $primaryYellow;
+                }
+                .buttonsContainer {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-evenly;
+                    margin: 20px 0;
+                    button{
+                        @include buttons;
+                        background-color: $primaryBlue;
+                        color: $backgroundDark;
+                &:hover,
+                &:focus,
+                &:active{
+                    display: inline-block;
+                    vertical-align: middle;
+                    transform: translateZ(0);
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 5);
+                    backface-visibility: hidden;
+                    -moz-osx-font-smoothing: grayscale;
+                    transition-duration: 0.3s;
+                    transition-property: transform;
+                    transform: scale(1.1);
+                }
+                        
+                    }
+                }
         }
+        
     }
 }
 
