@@ -1,4 +1,4 @@
-import { getDatabase, onValue, push, ref, remove } from "firebase/database";
+import { getDatabase, onValue, push, ref, remove, set } from "firebase/database";
 import { useContext, useEffect, useState } from "react";
 
 import { DBContext } from "../context/firebaseConnection";
@@ -43,15 +43,27 @@ const Lists = () => {
     remove(dbRef);
   };
 
-  //Submit new list name
-  const displayListWithMovies = (event, listId) => {   
+  //Add Movie to List
+  const addMovie = (listId) => {
     // Variable for the DB
     const database = getDatabase(firebase);
     // Variable for the reference
-    const dbRef = ref(database);
+    const dbRef = ref(database, `/${listId}`).child("kaka").set("");
+    
+    // const movie = "lll";
+    // push(dbRef, movie);
+  }
 
 
-  };
+  // //Submit new list name
+  // const displayListWithMovies = (event, listId) => {   
+  //   // Variable for the DB
+  //   const database = getDatabase(firebase);
+  //   // Variable for the reference
+  //   const dbRef = ref(database);
+
+
+  // };
 
   return (
     <section className="create-new-list">
@@ -76,6 +88,7 @@ const Lists = () => {
                <p>{`${list.name} - ${list.key}`}</p>             
               </p>
               <button onClick={() => handleRemoveList(list.key)}>Remove</button>
+              <button onClick={() => addMovie("-N1plnCVbVGPPdPBJVbB")}>Test Add</button>
             </li>
           );
         })}
