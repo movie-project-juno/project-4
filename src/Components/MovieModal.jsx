@@ -1,4 +1,13 @@
-const MovieModal = ({ movie, openModal, setOpenModal }) => {
+import { useState, useContext } from "react";
+import { DBContext } from "../context/firebaseConnection";
+
+const MovieModal = ({ movie, openModal, setOpenModal, saveNewFav }) => {
+  const userList = useContext(DBContext);
+
+  //Handling the event of adding a movie to a list
+  const [addMovie, setAddMovie] = useState([]);
+  const [removedMovie, setRemovedMovie] = useState([]);
+
   //Displaying a modal with movie details
   return (
     <>
@@ -22,8 +31,10 @@ const MovieModal = ({ movie, openModal, setOpenModal }) => {
                   <p>{movie.overview}</p>
                 </div>
                 <div className="buttonsContainer">
-                  <button>Add</button>
-                  <button>Remove</button>
+                  <button onClick={(event) => saveNewFav(movie)}>Add</button>
+                  <button onClick={(event) => userList.remove(movie)}>
+                    Remove
+                  </button>
                 </div>
               </div>
             </article>

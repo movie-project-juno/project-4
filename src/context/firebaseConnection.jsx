@@ -11,9 +11,6 @@ const DBContext = createContext();
 const UserDBContextProvider = ({ children }) => {
   //   //States
   const [lists, setLists] = useState([]);
-  const [userListNameInput, setUserListNameInput] = useState("");
-
-  //   //
   useEffect(() => {
     //     // Variable to hold the DB
     const database = getDatabase(firebase);
