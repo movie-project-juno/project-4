@@ -4,14 +4,15 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDgdy3uEFmzi_a7UgM2oQfsMY6pYSuhaPI",
-  authDomain: "quick-flick-picker-8efef.firebaseapp.com",
-  databaseURL: "https://quick-flick-picker-8efef-default-rtdb.firebaseio.com",
-  projectId: "quick-flick-picker-8efef",
-  storageBucket: "quick-flick-picker-8efef.appspot.com",
-  messagingSenderId: "461695642490",
-  appId: "1:461695642490:web:8a4bf5ee889027b21f44c3",
+  apiKey: "AIzaSyAPR1-6FISuJUDLVoe6Q85taygveYL7x34",
+  authDomain: "movie-react-api.firebaseapp.com",
+  databaseURL: "https://movie-react-api-default-rtdb.firebaseio.com",
+  projectId: "movie-react-api",
+  storageBucket: "movie-react-api.appspot.com",
+  messagingSenderId: "115254793048",
+  appId: "1:115254793048:web:4bb26ad2ea3e011d594b2d",
 };
 
 // Initialize Firebase
