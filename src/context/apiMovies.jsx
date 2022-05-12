@@ -1,7 +1,8 @@
 import axios from "axios";
+import { getDatabase, onValue, ref, set } from "firebase/database";
 import React, { createContext, useEffect, useState } from "react";
+
 import firebase from "../scripts/firebase";
-import { getDatabase, ref, onValue, set, remove } from "firebase/database";
 
 // create context
 const UserContext = createContext();
