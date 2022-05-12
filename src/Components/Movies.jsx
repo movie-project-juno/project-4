@@ -30,6 +30,14 @@ const Movies = () => {
           />
         </div>
         <div className="movieDetails">
+          <h2>{movie.original_title}</h2>
+
+          <p>{movie.vote_average}</p>
+          {genres.map((genre) => {
+            return(
+              <p>{genre.name}</p>
+            )
+          })}
           <div className="title">
             <h2>{movie.original_title || movie.original_name || movie.name}</h2>
             <FontAwesomeIcon
