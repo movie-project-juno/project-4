@@ -29,11 +29,16 @@ const Movies = () => {
         <div className="movieDetails">
           <div className="title">
             <h2>{movie.original_title || movie.original_name || movie.name}</h2>
-            <FontAwesomeIcon
+            {/* <FontAwesomeIcon              
               icon={faHeartCirclePlus}
               size="lg"
               className="iconAdd"
               onClick={faHeart}
+            /> */}
+            <FontAwesomeIcon
+              icon={false ? faHeartCirclePlus : faHeart}
+              size="lg"
+              className="iconAdd"
             />
           </div>
 

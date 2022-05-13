@@ -1,8 +1,15 @@
 import axios from "axios";
-import { getDatabase, onValue, ref, remove, set } from "firebase/database";
 import React, { createContext, useEffect, useState } from "react";
 
 import firebase from "../scripts/firebase";
+import {
+  getDatabase,
+  ref,
+  onValue,
+  set,
+  remove,
+  push,
+} from "firebase/database";
 
 // create context
 const UserContext = createContext();
@@ -11,6 +18,8 @@ const UserContextProvider = ({ children }) => {
   // the value that will be given to the context
   const [movies, setMovies] = useState([]);
   const [favList, setFavList] = useState();
+  const [favListArrayOfId, setFavListArrayOfId] = useState([]);
+  // const favListArrayOfId = []
 
   const db = getDatabase(firebase);
   const starCountRef = ref(db, "favlist");
@@ -69,9 +78,21 @@ const UserContextProvider = ({ children }) => {
   const saveNewFav = (movie) => {
     set(ref(db, "favlist/" + movie.id), {
       name: movie.name || movie.title,
+      id: movie.id,
       time: Date.now(),
     });
+
+    // favListArrayOfId.push(movie.id)
+
+    setFavListArrayOfId([...favListArrayOfId, movie.id]);
   };
+
+  console.log("favList", favList);
+  //  console.log("favList", favList[0])
+  //  console.log("favList", favList.key)
+
+  // console.log("favListArrayOfId", favListArrayOfId)
+  console.log("favListArrayOfId", favListArrayOfId[0]);
 
   return (
     // the Provider gives access to the context to its children
