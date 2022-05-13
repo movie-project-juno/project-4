@@ -1,4 +1,4 @@
-import { faHeartCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import { faHeartCirclePlus, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
 
@@ -34,6 +34,7 @@ const Movies = () => {
               icon={faHeartCirclePlus}
               size="lg"
               className="iconAdd"
+              onClick={faHeart}
             />
           </div>
 
