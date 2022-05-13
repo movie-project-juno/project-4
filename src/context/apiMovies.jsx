@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import firebase from "../scripts/firebase";
-import { getDatabase, ref, onValue, set } from "firebase/database";
+import { getDatabase, ref, onValue, set, remove } from "firebase/database";
 
 // create context
 const UserContext = createContext();
@@ -64,9 +64,13 @@ const UserContextProvider = ({ children }) => {
     });
   };
 
+    const removeFromNewFav = (movie) => {
+    remove(ref(db, "favlist/" + movie.id));
+  };
+
   return (
     // the Provider gives access to the context to its children
-    <UserContext.Provider value={{ movies, genres, favList, saveNewFav }}>
+    <UserContext.Provider value={{ movies, genres, favList, saveNewFav, removeFromNewFav }}>
       {children}
     </UserContext.Provider>
   );
