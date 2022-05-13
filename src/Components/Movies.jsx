@@ -5,11 +5,12 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../context/apiMovies";
 import MovieModal from "./MovieModal";
 
-//Imporrting movies from context
+//Importing movies from context
 const Movies = () => {
   const [movie, setMovie] = useState({});
   const [openModal, setOpenModal] = useState(false);
-  const { movies, genres, saveNewFav, removeFromNewFav } = useContext(UserContext);
+  const { movies, genres, saveNewFav, removeFromNewFav } =
+    useContext(UserContext);
   console.log("MOVIES", movies);
   const toggleModal = (movie) => {
     setMovie(movie);
@@ -35,10 +36,14 @@ const Movies = () => {
               className="iconAdd"
             />
           </div>
+
+          <p>
+            {movie.original_language}, Release date: {movie.release_date}
+          </p>
+
           <p>Rate: {movie.vote_average}</p>
-          {genres.map((genre) => {
-            return <p>{genre.name}</p>;
-          })}
+          {movie.genreDetails && <p>{movie.genreDetails[0].name}</p>}
+
           <div className="buttonsContainer">
             {/* <button>Watch trailer</button> */}
             <button onClick={() => toggleModal(movie)} className="hover">
