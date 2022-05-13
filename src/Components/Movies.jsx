@@ -9,7 +9,7 @@ import MovieModal from "./MovieModal";
 const Movies = () => {
   const [movie, setMovie] = useState({});
   const [openModal, setOpenModal] = useState(false);
-  const { movies, genres, saveNewFav } = useContext(UserContext);
+  const { movies, genres, saveNewFav, removeFromNewFav } = useContext(UserContext);
   console.log("MOVIES", movies);
   const toggleModal = (movie) => {
     setMovie(movie);
@@ -58,6 +58,7 @@ const Movies = () => {
         openModal={openModal}
         setOpenModal={setOpenModal}
         saveNewFav={saveNewFav}
+        removeFromNewFav={removeFromNewFav}
       />
     </main>
   );
