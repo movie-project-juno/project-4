@@ -1,4 +1,4 @@
-import { faHeartCirclePlus, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faHeartCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
 
@@ -9,9 +9,8 @@ import MovieModal from "./MovieModal";
 const Movies = () => {
   const [movie, setMovie] = useState({});
   const [openModal, setOpenModal] = useState(false);
-  const { movies, genres, saveNewFav, removeFromNewFav } =
-    useContext(UserContext);
-  console.log("MOVIES", movies);
+  const { movies, saveNewFav, removeFromNewFav } = useContext(UserContext);
+
   const toggleModal = (movie) => {
     setMovie(movie);
     setOpenModal(true);

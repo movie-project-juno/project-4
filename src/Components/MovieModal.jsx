@@ -1,13 +1,10 @@
-import { useState, useContext } from "react";
-import { DBContext } from "../context/firebaseConnection";
-
-const MovieModal = ({ movie, openModal, setOpenModal, saveNewFav, removeFromNewFav }) => {      //HERE TDM !!!!!!!!!!!!!! 
-  const userList = useContext(DBContext);
-
-  //Handling the event of adding a movie to a list
-  const [addMovie, setAddMovie] = useState([]);
-  const [removedMovie, setRemovedMovie] = useState([]);
-
+const MovieModal = ({
+  movie,
+  openModal,
+  setOpenModal,
+  saveNewFav,
+  removeFromNewFav,
+}) => {
   //Displaying a modal with movie details
   return (
     <>
@@ -32,7 +29,9 @@ const MovieModal = ({ movie, openModal, setOpenModal, saveNewFav, removeFromNewF
                 </div>
                 <div className="buttonsContainer">
                   <button onClick={(event) => saveNewFav(movie)}>Add</button>
-                  <button onClick={(event) => removeFromNewFav(movie)}>Remove</button>
+                  <button onClick={(event) => removeFromNewFav(movie)}>
+                    Remove
+                  </button>
                 </div>
               </div>
             </article>
