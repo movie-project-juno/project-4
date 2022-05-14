@@ -76,16 +76,15 @@ const UserContextProvider = ({ children }) => {
     setMovies(newMovies);
   };
 
-  const saveNewFav = (movie) => {
-    set(ref(db, "favlist/" + movie.id), {
-      name: movie.name || movie.title,
-      time: Date.now(),
-    });
+  const removeFromNewFav = (movie) => {
+    remove(ref(db, "favlist/" + movie.id));
   };
 
   return (
     // the Provider gives access to the context to its children
-    <UserContext.Provider value={{ movies, genres, favList, saveNewFav }}>
+    <UserContext.Provider
+      value={{ movies, genres, favList, saveNewFav, removeFromNewFav }}
+    >
       {children}
     </UserContext.Provider>
   );

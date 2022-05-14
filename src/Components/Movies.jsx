@@ -9,7 +9,8 @@ import MovieModal from "./MovieModal";
 const Movies = () => {
   const [movie, setMovie] = useState({});
   const [openModal, setOpenModal] = useState(false);
-  const { movies, genres, saveNewFav } = useContext(UserContext);
+  const { movies, genres, saveNewFav, removeFromNewFav } =
+    useContext(UserContext);
   console.log("MOVIES", movies);
   const toggleModal = (movie) => {
     setMovie(movie);
@@ -35,7 +36,11 @@ const Movies = () => {
               className="iconAdd"
             />
           </div>
+<<<<<<< HEAD
           
+=======
+
+>>>>>>> ed6ac2e57ebe69ab17f2286143ab5e3772f27587
           <p>
             {movie.original_language}, Release date: {movie.release_date}
           </p>
@@ -62,6 +67,7 @@ const Movies = () => {
         openModal={openModal}
         setOpenModal={setOpenModal}
         saveNewFav={saveNewFav}
+        removeFromNewFav={removeFromNewFav}
       />
     </main>
   );
