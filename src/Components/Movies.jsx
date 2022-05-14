@@ -36,11 +36,8 @@ const Movies = () => {
               className="iconAdd"
             />
           </div>
-<<<<<<< HEAD
           
-=======
 
->>>>>>> ed6ac2e57ebe69ab17f2286143ab5e3772f27587
           <p>
             {movie.original_language}, Release date: {movie.release_date}
           </p>
