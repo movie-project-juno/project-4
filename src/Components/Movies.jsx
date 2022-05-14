@@ -5,7 +5,7 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../context/apiMovies";
 import MovieModal from "./MovieModal";
 
-//Imporrting movies from context
+//Importing movies from context
 const Movies = () => {
   const [movie, setMovie] = useState({});
   const [openModal, setOpenModal] = useState(false);
