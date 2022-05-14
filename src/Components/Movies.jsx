@@ -1,4 +1,4 @@
-import { faHeart, faHeartCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import { faHeartCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
 
@@ -9,6 +9,7 @@ import MovieModal from "./MovieModal";
 const Movies = () => {
   const [movie, setMovie] = useState({});
   const [openModal, setOpenModal] = useState(false);
+
   const { movies, saveNewFav, removeFromNewFav } = useContext(UserContext);
 
   const toggleModal = (movie) => {
@@ -33,7 +34,6 @@ const Movies = () => {
               icon={faHeartCirclePlus}
               size="lg"
               className="iconAdd"
-              onClick={faHeart}
             />
           </div>
 
