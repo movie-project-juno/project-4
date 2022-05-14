@@ -2,9 +2,10 @@ header{
     font-family: "Josefin Sans", sans-serif;
     font-weight: 600;
     font-size: 48px;
-    color: $primaryYellow;
+    color: $primaryRed;
+    border: 1px solid $primaryYellow;
     height: 450px;
-    background-image: url(../../../public/images/headerimg.jpg);
+    background-image: url(../../../public/images/headerimg.png);
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -12,4 +13,8 @@ header{
     display: flex;
     align-items: center;
     flex: 1 1 250px;
+    h1{
+        @include headings;
+        left: 0;
+    }
 }
