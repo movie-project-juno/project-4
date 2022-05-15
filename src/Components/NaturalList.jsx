@@ -15,11 +15,13 @@ const NaturalList = () => {
 
   //   creates an array with unique genres from the fav movies
   useEffect(() => {
-    if (Object.keys(favList).length && movies.length) {
+    if (favList && Object.keys(favList).length && movies.length) {
       const genreArray = [];
 
-      for (const movie of Object.values(favList)) {
-        genreArray.push(movie.genres[0].name);
+      for (const favMovie of Object.values(favList)) {
+        if (favMovie.genres && favMovie.genres[0]) {
+          genreArray.push(favMovie.genres[0].name);
+        }
       }
       setFavGenres([...new Set(genreArray)]);
     }
