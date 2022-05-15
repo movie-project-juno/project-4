@@ -37,7 +37,6 @@ const Movies = () => {
             />
           </div>
           
-
           <p>
             {movie.original_language}, Release date: {movie.release_date}
           </p>

@@ -1,8 +1,7 @@
 import axios from "axios";
-import { getDatabase, onValue, ref, set } from "firebase/database";
 import React, { createContext, useEffect, useState } from "react";
-
 import firebase from "../scripts/firebase";
+import { getDatabase, ref, onValue, set } from "firebase/database";
 
 // create context
 const UserContext = createContext();
@@ -31,31 +30,16 @@ const UserContextProvider = ({ children }) => {
   };
   // fetch a user from a fake backend API
   useEffect(() => {
-    const fetchData = async () => {
-      const {
-        data: { results: movies },
-      } = await axios({
-        method: "GET",
-        url: "https://api.themoviedb.org/3/trending/all/day?",
-        params: {
-          format: "json",
-          api_key: "9279e74f93d44d00c0b5afd5efff4065",
-        },
-      });
-      getGenres(movies);
-
-      // TO DO DELETE THIS RESPONSE22 - using just to get image sizes
-      const response22 = await axios({
-        method: "GET",
-        url: "https://api.themoviedb.org/3/configuration?api_key=9279e74f93d44d00c0b5afd5efff4065",
-      });
-    };
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      console.log("data", data);
+      setFavList(data);
+    });
     fetchData();
   }, []);
 
-  const getGenres = (movies) => {
-    const newMovies = [...movies];
-    newMovies.forEach((movie) => {
+  useEffect(() => {
+    movies.forEach((movie) => {
       // console.log(movie.id)
 
       const fetchGenres = async (movie_id) => {
@@ -67,24 +51,22 @@ const UserContextProvider = ({ children }) => {
             api_key: "9279e74f93d44d00c0b5afd5efff4065",
           },
         });
-        movie.genreDetails = response.data.genres;
-        movie.durationDetails = response.data.runtime;
+        setGenres(response.data.genres);
       };
       fetchGenres(movie.id);
     });
-    console.log(newMovies);
-    setMovies(newMovies);
-  };
+  }, [movies]);
 
-  const removeFromNewFav = (movie) => {
-    remove(ref(db, "favlist/" + movie.id));
+  const saveNewFav = (movie) => {
+    set(ref(db, "favlist/" + movie.id), {
+      name: movie.name || movie.title,
+      time: Date.now(),
+    });
   };
 
   return (
     // the Provider gives access to the context to its children
-    <UserContext.Provider
-      value={{ movies, genres, favList, saveNewFav, removeFromNewFav }}
-    >
+    <UserContext.Provider value={{ movies, genres, favList, saveNewFav }}>
       {children}
     </UserContext.Provider>
   );
