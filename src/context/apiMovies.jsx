@@ -1,7 +1,8 @@
 import axios from "axios";
+import { getDatabase, onValue, ref, remove, set } from "firebase/database";
 import React, { createContext, useEffect, useState } from "react";
+
 import firebase from "../scripts/firebase";
-import { getDatabase, ref, onValue, set } from "firebase/database";
 
 // create context
 const UserContext = createContext();
@@ -9,13 +10,24 @@ const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
   // the value that will be given to the context
   const [movies, setMovies] = useState([]);
-  const [genres, setGenres] = useState([]);
   const [favList, setFavList] = useState();
 
   const db = getDatabase(firebase);
   const starCountRef = ref(db, "favlist");
 
-  const fetchData = async () => {
+  // fetch a user from a fake backend API
+  useEffect(() => {
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      console.log("data", data);
+      setFavList(data);
+    });
+
+    fetchMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchMovies = async () => {
     const {
       data: { results: movies },
     } = await axios({
@@ -26,22 +38,12 @@ const UserContextProvider = ({ children }) => {
         api_key: "9279e74f93d44d00c0b5afd5efff4065",
       },
     });
-    setMovies(movies);
+    getGenres(movies);
   };
-  // fetch a user from a fake backend API
-  useEffect(() => {
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      console.log("data", data);
-      setFavList(data);
-    });
-    fetchData();
-  }, []);
 
-  useEffect(() => {
-    movies.forEach((movie) => {
-      // console.log(movie.id)
-
+  const getGenres = (movies) => {
+    const newMovies = [...movies];
+    newMovies.forEach((movie) => {
       const fetchGenres = async (movie_id) => {
         const response = await axios({
           method: "GET",
@@ -51,11 +53,18 @@ const UserContextProvider = ({ children }) => {
             api_key: "9279e74f93d44d00c0b5afd5efff4065",
           },
         });
-        setGenres(response.data.genres);
+        movie.genreDetails = response.data.genres;
+        movie.durationDetails = response.data.runtime;
       };
+
       fetchGenres(movie.id);
     });
-  }, [movies]);
+    setMovies(newMovies);
+  };
+
+  const removeFromNewFav = (movie) => {
+    remove(ref(db, "favlist/" + movie.id));
+  };
 
   const saveNewFav = (movie) => {
     set(ref(db, "favlist/" + movie.id), {
@@ -66,7 +75,9 @@ const UserContextProvider = ({ children }) => {
 
   return (
     // the Provider gives access to the context to its children
-    <UserContext.Provider value={{ movies, genres, favList, saveNewFav }}>
+    <UserContext.Provider
+      value={{ movies, favList, saveNewFav, removeFromNewFav }}
+    >
       {children}
     </UserContext.Provider>
   );
