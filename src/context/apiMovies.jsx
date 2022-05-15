@@ -19,7 +19,7 @@ const UserContextProvider = ({ children }) => {
   useEffect(() => {
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      console.log("data", data);
+      // console.log("data", data);
       setFavList(data);
     });
 
@@ -53,7 +53,7 @@ const UserContextProvider = ({ children }) => {
             api_key: "9279e74f93d44d00c0b5afd5efff4065",
           },
         });
-        movie.genreDetails = response.data.genres;
+        movie.genreDetails = response.data.genres
         movie.durationDetails = response.data.runtime;
       };
 
