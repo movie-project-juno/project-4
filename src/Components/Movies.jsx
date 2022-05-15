@@ -10,7 +10,8 @@ const Movies = () => {
   const [movie, setMovie] = useState({});
   const [openModal, setOpenModal] = useState(false);
 
-  const { movies, saveNewFav, removeFromNewFav } = useContext(UserContext);
+  const { movies, saveNewFav, removeFromNewFav, favList } =
+    useContext(UserContext);
 
   const toggleModal = (movie) => {
     setMovie(movie);
@@ -60,6 +61,7 @@ const Movies = () => {
       {renderMovies()}
       <MovieModal
         movie={movie}
+        favList={favList}
         openModal={openModal}
         setOpenModal={setOpenModal}
         saveNewFav={saveNewFav}

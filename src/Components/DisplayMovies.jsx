@@ -1,43 +1,39 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../context/apiMovies";
 
-
-
 const DisplayMovies = () => {
-//   const theFavMovies =  [
-// //   {
-// //   "453395": {
-// //     "id": 453395,
-    
-//  "Doctor Strange in the Multiverse of Madness",
-//     // "time": 1652458798279
-// //   },
-// //   "661231": {
-// //     "id": 661231,
-// //     "name": "Operation Mincemeat",
-// //     "time": 1652458806365
-// //   },
-// //   "752623": {
-// //     "name": "The Lost City",
-// //     "time": 1652461062128
-// //   }
-// // }
-//   ]
+  //   const theFavMovies =  [
+  // //   {
+  // //   "453395": {
+  // //     "id": 453395,
 
-// const result = Object.values(theFavMovies)
-// console.log('THE RESULT', result)
-    const { movies, genres, favList } = useContext(UserContext);
-    // console.log("Alexxxxxxxxx ", favList)
+  //  "Doctor Strange in the Multiverse of Madness",
+  //     // "time": 1652458798279
+  // //   },
+  // //   "661231": {
+  // //     "id": 661231,
+  // //     "name": "Operation Mincemeat",
+  // //     "time": 1652458806365
+  // //   },
+  // //   "752623": {
+  // //     "name": "The Lost City",
+  // //     "time": 1652461062128
+  // //   }
+  // // }
+  //   ]
 
-    const theFavMovie = []
+  // const result = Object.values(theFavMovies)
+  // console.log('THE RESULT', result)
+  const { movies, genres, favList } = useContext(UserContext);
+  // console.log("Alexxxxxxxxx ", favList)
 
-    theFavMovie.push(favList)
-      console.log("Alexxxxxxxxx ", theFavMovie)
+  const theFavMovie = [];
 
-    return (
+  theFavMovie.push(favList);
+
+  return (
     <div>
-
-        {/* <ul>
+      {/* <ul>
             {
                 theFavMovie.map((movie) => {
                     console.log("HEY THIS IS MOVIE" , movie)
@@ -47,8 +43,8 @@ const DisplayMovies = () => {
                 })
             }
         </ul> */}
-        
-        {/* <ul>
+
+      {/* <ul>
             {favList.map((movie) => {
                 return (
 
@@ -58,13 +54,9 @@ const DisplayMovies = () => {
             })}
             
         </ul> */}
-        <p>Alex && THEO</p>
+      <p>Alex && THEO</p>
     </div>
+  );
+};
 
-    
-    
-        
-    )
-}
-
-export default DisplayMovies
+export default DisplayMovies;

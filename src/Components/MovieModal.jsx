@@ -2,9 +2,13 @@ const MovieModal = ({
   movie,
   openModal,
   setOpenModal,
+  favList,
   saveNewFav,
   removeFromNewFav,
 }) => {
+  // check if movie is already in FavList
+  const inFavlist = favList && !!favList[movie.id];
+
   //Displaying a modal with movie details
   return (
     <>
@@ -28,10 +32,13 @@ const MovieModal = ({
                   <p>{movie.overview}</p>
                 </div>
                 <div className="buttonsContainer">
-                  <button onClick={(event) => saveNewFav(movie)}>Add</button>
-                  <button onClick={(event) => removeFromNewFav(movie)}>
-                    Remove
-                  </button>
+                  {inFavlist ? (
+                    <button onClick={(event) => removeFromNewFav(movie)}>
+                      Remove
+                    </button>
+                  ) : (
+                    <button onClick={(event) => saveNewFav(movie)}>Add</button>
+                  )}
                 </div>
               </div>
             </article>
