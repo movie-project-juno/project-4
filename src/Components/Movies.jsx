@@ -37,14 +37,14 @@ const Movies = () => {
               </h2>
               {isInFavList ? (
                 <FontAwesomeIcon
-                  icon={faHeartCirclePlus}
+                  icon={faHeart}
                   size="lg"
                   className="iconAdd"
                   onClick={(event) => removeFromNewFav(movie)}
                 />
               ) : (
                 <FontAwesomeIcon
-                  icon={faHeart}
+                  icon={faHeartCirclePlus}
                   size="lg"
                   className="iconFav"
                   onClick={(event) => saveNewFav(movie)}
