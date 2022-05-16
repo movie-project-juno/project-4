@@ -26,7 +26,10 @@ const MovieModal = ({ movie, openModal, setOpenModal, saveNewFav, removeFromNewF
               </figure>
               <div className="modalDetails">
                 <h3>{movie.name || movie.title}</h3>
+                <p>{movie.genreDetails[0].name}</p>
                 <p>Rate: {movie.vote_average}</p>
+                <p>Runtime: {movie.durationDetails} minutes</p>
+                <button>Watch Trailer</button>
                 <div className="modalText">
                   <p>{movie.overview}</p>
                 </div>
