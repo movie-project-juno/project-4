@@ -36,7 +36,24 @@ const MovieModal = ({
                   <p><span className="description">Runtime:</span> {movie.durationDetails} minutes</p>
                   <p><span className="description">Language:</span> <span className="language">{movie.original_language}</span></p>
                   <p><span className="description">Release date:</span> {movie.release_date}</p>
-                  <p><span className="description">Director:</span></p>
+                  <p><span className="description">Production:</span> {movie.productionCompany[0].name}</p>
+
+                  <div className="crew">
+                    <p><span className="description">Director:</span>
+                    </p>
+                    <ul>{movie.crewDetails.slice(0, 3).map((crew, index) => {
+                      return (
+                        <li key={index} className="castList">
+                          {crew.name}
+                          {crew.job}
+                        </li>
+                      )
+                    })}</ul>
+                  </div>
+
+                  {/* <p><span className="description">Director:</span>{movie.crewDetails}</p> */}
+
+
                   <div className="cast">
                   <p><span className="description">Cast:</span>
                   </p>

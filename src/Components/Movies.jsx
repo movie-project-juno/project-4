@@ -42,11 +42,15 @@ const Movies = () => {
           <p>Rating: {movie.vote_average}</p>
           {movie.genreDetails && <p>{movie.genreDetails[0].name}</p>}
 
+          <a href="https://www.youtube.com/watch?v="></a>
+
           <div className="buttonsContainer">
             <button onClick={() => toggleModal(movie)} className="hover">
               Read More
             </button>
+            
             <button className="trailer">Watch trailer</button>
+
           </div>
         </div>
       </article>

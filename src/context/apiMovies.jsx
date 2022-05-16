@@ -48,16 +48,36 @@ const UserContextProvider = ({ children }) => {
         try {
           const response = await axios({
             method: "GET",
+            url: `https://api.themoviedb.org/3/movie/${movie_id}`,
+            params: {
+              format: "json",
+              api_key: "9279e74f93d44d00c0b5afd5efff4065",
+            },
+          });
+          const responseCredit = await axios({
+            method: "GET",
             url: `https://api.themoviedb.org/3/movie/${movie_id}/credits`,
             params: {
               format: "json",
               api_key: "9279e74f93d44d00c0b5afd5efff4065",
             },
           });
-          console.log(response);
+          const responseVideo = await axios({
+            method: "GET",
+            url: `https://api.themoviedb.org/3/movie/${movie_id}/videos`,
+            params: {
+              format: "json",
+              api_key: "9279e74f93d44d00c0b5afd5efff4065",
+            },
+          });
           movie.genreDetails = response.data.genres;
           movie.durationDetails = response.data.runtime;
-          movie.castDetails = response.data.cast;
+          movie.productionCompany = response.data.production_companies;
+          movie.castDetails = responseCredit.data.cast;
+          movie.crewDetails = responseCredit.data.crew;
+          movie.videoDetails = responseCredit.data.results;
+          console.log("EH", responseVideo);
+          console.log("CREWWW", movie.crewDetails)
         } catch (error) {
           movie.genreDetails = [{ id: 0, name: "General" }];
           movie.durationDetails = 120;
