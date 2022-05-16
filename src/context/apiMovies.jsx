@@ -56,7 +56,6 @@ const UserContextProvider = ({ children }) => {
         movie.genreDetails = response.data.genres
         movie.durationDetails = response.data.runtime;
       };
-
       fetchGenres(movie.id);
     });
     setMovies(newMovies);
