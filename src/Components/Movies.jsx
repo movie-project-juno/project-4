@@ -46,7 +46,7 @@ const Movies = () => {
                 <FontAwesomeIcon
                   icon={faHeart}
                   size="lg"
-                  className="iconAdd"
+                  className="iconFav"
                   onClick={(event) => saveNewFav(movie)}
                 />
               )}
