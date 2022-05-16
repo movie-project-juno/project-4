@@ -1,7 +1,8 @@
+//Components
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import Movies from "./Components/Movies";
-import SearchBar from "./Components/SearchBar";
+import SelectMovies from "./Components/SelectMovies";
 import { UserContextProvider } from "./context/apiMovies";
 
 //Style
@@ -12,7 +13,13 @@ const App = () => {
     <div className="App">
       <Header />
       <UserContextProvider>
-        <SearchBar />
+        <SelectMovies />
+        {/* <NaturalList />
+          <SelectMovie/>
+        <UserDBContextProvider>
+          <Lists />
+        </UserDBContextProvider> */}
+        {/* <SearchBar /> */}
         <Movies />
       </UserContextProvider>
       <Footer />

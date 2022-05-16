@@ -10,7 +10,7 @@ const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
   // the value that will be given to the context
   const [movies, setMovies] = useState([]);
-  const [favList, setFavList] = useState();
+  const [favList, setFavList] = useState([]);
 
   const db = getDatabase(firebase);
   const starCountRef = ref(db, "favlist");
@@ -19,7 +19,6 @@ const UserContextProvider = ({ children }) => {
   useEffect(() => {
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      console.log("data", data);
       setFavList(data);
     });
 
@@ -45,16 +44,22 @@ const UserContextProvider = ({ children }) => {
     const newMovies = [...movies];
     newMovies.forEach((movie) => {
       const fetchGenres = async (movie_id) => {
-        const response = await axios({
-          method: "GET",
-          url: `https://api.themoviedb.org/3/movie/${movie_id}`,
-          params: {
-            format: "json",
-            api_key: "9279e74f93d44d00c0b5afd5efff4065",
-          },
-        });
-        movie.genreDetails = response.data.genres;
-        movie.durationDetails = response.data.runtime;
+        try {
+          const response = await axios({
+            method: "GET",
+            url: `https://api.themoviedb.org/3/movie/${movie_id}`,
+            params: {
+              format: "json",
+              api_key: "9279e74f93d44d00c0b5afd5efff4065",
+            },
+          });
+          movie.genreDetails = response.data.genres;
+          movie.durationDetails = response.data.runtime;
+        } catch (error) {
+          movie.genreDetails = [{ id: 0, name: "General" }];
+          movie.durationDetails = 120;
+          // console.log("Error fetching movie genre", movie, error);
+        }
       };
 
       fetchGenres(movie.id);
@@ -69,7 +74,9 @@ const UserContextProvider = ({ children }) => {
   const saveNewFav = (movie) => {
     set(ref(db, "favlist/" + movie.id), {
       name: movie.name || movie.title,
-      time: Date.now(),
+      createAt: Date.now(),
+      genres: movie.genreDetails,
+      duration: movie.durationDetails,
     });
   };
 
