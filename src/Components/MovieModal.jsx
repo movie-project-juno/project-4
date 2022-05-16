@@ -27,12 +27,27 @@ const MovieModal = ({
               </figure>
               <div className="modalDetails">
                 <h3>{movie.name || movie.title}</h3>
-                <p>{movie.genreDetails[0].name}</p>
-                <p>Rate: {movie.vote_average}</p>
-                <p>Runtime: {movie.durationDetails} minutes</p>
-                <button>Watch Trailer</button>
+                <p className="modalGenre">{movie.genreDetails[0].name ? movie.genreDetails[0].name : null }</p>
+                <p>⭐ {movie.vote_average}/10</p>
                 <div className="modalText">
                   <p>{movie.overview}</p>
+                </div>
+                <div className="movieDetailList">
+                  <p><span className="description">Runtime:</span> {movie.durationDetails} minutes</p>
+                  <p><span className="description">Language:</span> <span className="language">{movie.original_language}</span></p>
+                  <p><span className="description">Release date:</span> {movie.release_date}</p>
+                  <p><span className="description">Director:</span></p>
+                  <div className="cast">
+                  <p><span className="description">Cast:</span>
+                  </p>
+                    <ul>{movie.castDetails.slice(0,3).map((cast, index) => {
+                      return(
+                        <li key={index} className="castList">
+                          {cast.name}
+                        </li>
+                      )
+                    })}</ul>
+                  </div>
                 </div>
                 <div className="buttonsContainer">
                   {inFavlist ? (

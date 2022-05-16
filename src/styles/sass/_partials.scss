@@ -103,13 +103,15 @@ body{
                     transition-property: transform;
                     transform: scale(1.1);
                 }
-                  }
+            }
+        }
+        .trailer {
+            margin-left: 14px;
         }
         .iconAdd {
             color: $primaryYellow;
             cursor: pointer;
         }
-       
     }
     
 }
@@ -204,3 +206,33 @@ body{
     padding: 20px;
 }
 
+.modalGenre {
+    border: 2px solid white;
+    border-radius: 90px;
+    width: 20%;
+    padding: 4px;
+    text-align: center;
+}
+
+.movieDetailList {
+    line-height: 5px;
+}
+
+.description {
+    font-weight: bold;
+    padding-right: 6px;
+}
+
+.language {
+    text-transform: uppercase;
+}
+
+.cast {
+    color: $primaryYellow;
+}
+
+.castList {
+    line-height: 20px;
+    // display: inline;
+    padding-left: 10px;
+}

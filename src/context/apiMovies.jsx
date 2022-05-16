@@ -21,11 +21,11 @@ const UserContextProvider = ({ children }) => {
       const data = snapshot.val();
       setFavList(data);
     });
-
+    
     fetchMovies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  
   const fetchMovies = async () => {
     const {
       data: { results: movies },
@@ -36,10 +36,11 @@ const UserContextProvider = ({ children }) => {
         format: "json",
         api_key: "9279e74f93d44d00c0b5afd5efff4065",
       },
+      
     });
     getGenres(movies);
   };
-
+  
   const getGenres = (movies) => {
     const newMovies = [...movies];
     newMovies.forEach((movie) => {
@@ -47,21 +48,23 @@ const UserContextProvider = ({ children }) => {
         try {
           const response = await axios({
             method: "GET",
-            url: `https://api.themoviedb.org/3/movie/${movie_id}`,
+            url: `https://api.themoviedb.org/3/movie/${movie_id}/credits`,
             params: {
               format: "json",
               api_key: "9279e74f93d44d00c0b5afd5efff4065",
             },
           });
+          console.log(response);
           movie.genreDetails = response.data.genres;
           movie.durationDetails = response.data.runtime;
+          movie.castDetails = response.data.cast;
         } catch (error) {
           movie.genreDetails = [{ id: 0, name: "General" }];
           movie.durationDetails = 120;
           // console.log("Error fetching movie genre", movie, error);
         }
       };
-
+      
       fetchGenres(movie.id);
     });
     setMovies(newMovies);

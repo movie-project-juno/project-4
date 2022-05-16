@@ -39,18 +39,14 @@ const Movies = () => {
             />
           </div>
 
-          <p>
-            {movie.original_language}, Release date: {movie.release_date}
-          </p>
-
-          <p>Rate: {movie.vote_average}</p>
+          <p>Rating: {movie.vote_average}</p>
           {movie.genreDetails && <p>{movie.genreDetails[0].name}</p>}
 
           <div className="buttonsContainer">
-            {/* <button>Watch trailer</button> */}
             <button onClick={() => toggleModal(movie)} className="hover">
               Read More
             </button>
+            <button className="trailer">Watch trailer</button>
           </div>
         </div>
       </article>
