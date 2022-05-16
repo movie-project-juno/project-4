@@ -1,0 +1,19 @@
+.NLForm{
+    @include bodyFont;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+    background-color: rgba(225, 222, 222, 0.8);
+    padding: 20px;
+    button {
+        @include buttons;
+        margin: 20px 0 10px 0;
+        width: 100%;
+    }
+    select{
+        height: 40px;
+    }
+}
+

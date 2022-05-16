@@ -1,0 +1,80 @@
+//Modal
+.movieModal{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    .moviesModalContainer{
+        position: relative;
+        width: 60%;
+        height: 750px;
+        min-width: 300px;
+        min-height: 400px;
+        background-color: $backgroundDark;
+        border: 1px solid black;
+        margin: auto;
+        .closeButton {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            color: $primaryYellow;
+            top: 30px;
+            right: 30px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid $primaryYellow;
+            background-color: $primaryRed;
+        }
+        
+        }
+        .modalContent {
+            width: 90%;
+            height: 90%;
+            padding: 20px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .modalDetails {
+                display: flex;
+                flex-direction: column;
+                width: 90%;
+                p, h3{
+                    color: $primaryYellow;
+                }
+                .buttonsContainer {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-evenly;
+                    margin: 20px 0;
+                    button{
+                        @include buttons;
+                        background-color: $primaryBlue;
+                        color: $backgroundDark;
+                &:hover,
+                &:focus,
+                &:active{
+                    display: inline-block;
+                    vertical-align: middle;
+                    transform: translateZ(0);
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 5);
+                    backface-visibility: hidden;
+                    -moz-osx-font-smoothing: grayscale;
+                    transition-duration: 0.3s;
+                    transition-property: transform;
+                    transform: scale(1.1);
+                }
+                        
+                    }
+                }
+        }
+        
+    }
+}
