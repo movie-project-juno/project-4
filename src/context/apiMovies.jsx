@@ -48,32 +48,32 @@ const UserContextProvider = ({ children }) => {
         try {
           const response = await axios({
             method: "GET",
-            url: `https://api.themoviedb.org/3/movie/${movie_id}`,
+            url: `https://api.themoviedb.org/3/movie/${movie_id}?append_to_response=videos, credits`,
             params: {
               format: "json",
               api_key: "9279e74f93d44d00c0b5afd5efff4065",
             },
           });
-          const responseCredit = await axios({
-            method: "GET",
-            url: `https://api.themoviedb.org/3/movie/${movie_id}/credits`,
-            params: {
-              format: "json",
-              api_key: "9279e74f93d44d00c0b5afd5efff4065",
-            },
-          });
-          const responseVideo = await axios({
-            method: "GET",
-            url: `https://api.themoviedb.org/3/movie/${movie_id}/videos`,
-            params: {
-              format: "json",
-              api_key: "9279e74f93d44d00c0b5afd5efff4065",
-            },
-          });
+          // const responseCredit = await axios({
+          //   method: "GET",
+          //   url: `https://api.themoviedb.org/3/movie/${movie_id}/credits`,
+          //   params: {
+          //     format: "json",
+          //     api_key: "9279e74f93d44d00c0b5afd5efff4065",
+          //   },
+          // });
+          // const responseVideo = await axios({
+          //   method: "GET",
+          //   url: `https://api.themoviedb.org/3/movie/${movie_id}/videos`,
+          //   params: {
+          //     format: "json",
+          //     api_key: "9279e74f93d44d00c0b5afd5efff4065",
+          //   },
+          // });
           movie.genreDetails = response.data.genres;
           movie.durationDetails = response.data.runtime;
-          movie.castDetails = responseCredit.data.cast;
-          movie.videoDetails = responseVideo.data.results;
+          movie.castDetails = response.data.cast;
+          movie.videoDetails = response.data.results;
         } catch (error) {
           movie.genreDetails = [{ id: 0, name: "General" }];
           movie.durationDetails = 120;
