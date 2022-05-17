@@ -17,7 +17,7 @@ const Movies = () => {
     setMovie(movie);
     setOpenModal(true);
   };
-
+  console.log(movie);
   // Looping and rendering a list of movies
   const renderMovies = () => {
     return movies.map((movie) => {
@@ -70,7 +70,7 @@ const Movies = () => {
       );
     });
   };
-  
+
   //Render movie list
   return (
     <main className="wrapper container">
