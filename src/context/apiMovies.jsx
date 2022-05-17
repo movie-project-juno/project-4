@@ -72,12 +72,26 @@ const UserContextProvider = ({ children }) => {
           });
           movie.genreDetails = response.data.genres;
           movie.durationDetails = response.data.runtime;
-          movie.productionCompany = response.data.production_companies;
           movie.castDetails = responseCredit.data.cast;
           movie.videoDetails = responseVideo.data.results;
         } catch (error) {
           movie.genreDetails = [{ id: 0, name: "General" }];
           movie.durationDetails = 120;
+          movie.castDetails = [{ 
+            adult: false, 
+            cast_id: 0, 
+            character: "", 
+            credit_id: "", 
+            gender: 0, 
+            id: 0, 
+            known_for_department: "Acting", 
+            name: "",
+            order: 0,
+            original_name: "",
+            popularity: 0,
+            profile_path: "/.jpg"
+          }];
+
           // console.log("Error fetching movie genre", movie, error);
         }
       };
