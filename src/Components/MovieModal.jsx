@@ -23,6 +23,7 @@ const MovieModal = ({
                 <img
                   src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
                   alt={movie.name || movie.title}
+                  className="imageModal"
                 />
               </figure>
 

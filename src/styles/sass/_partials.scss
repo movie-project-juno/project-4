@@ -128,8 +128,6 @@ body{
     .moviesModalContainer{
         position: relative;
         width: 100%;
-        // width: 60%;
-        // height: 750px;
         height: 550px;
         min-width: 300px;
         min-height: 400px;
@@ -159,7 +157,6 @@ body{
             padding: 20px;
             margin: auto;
             display: flex;
-            // flex-direction: column;
             justify-content: center;
             align-items: center;
             img{
