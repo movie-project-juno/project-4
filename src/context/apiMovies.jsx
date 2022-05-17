@@ -1,17 +1,14 @@
 import axios from "axios";
 import { getDatabase, onValue, ref, remove, set } from "firebase/database";
 import React, { createContext, useEffect, useState } from "react";
-
 import firebase from "../scripts/firebase";
 
 // create context
 const UserContext = createContext();
-
 const UserContextProvider = ({ children }) => {
   // the value that will be given to the context
   const [movies, setMovies] = useState([]);
   const [favList, setFavList] = useState([]);
-
   const db = getDatabase(firebase);
   const starCountRef = ref(db, "favlist");
 
@@ -21,11 +18,9 @@ const UserContextProvider = ({ children }) => {
       const data = snapshot.val();
       setFavList(data);
     });
-
     fetchMovies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const fetchMovies = async () => {
     const {
       data: { results: movies },
@@ -39,7 +34,7 @@ const UserContextProvider = ({ children }) => {
     });
     getGenres(movies);
   };
-
+  // fetch movie details
   const getGenres = (movies) => {
     const newMovies = [...movies];
     newMovies.forEach((movie) => {
@@ -53,23 +48,6 @@ const UserContextProvider = ({ children }) => {
               api_key: "9279e74f93d44d00c0b5afd5efff4065",
             },
           });
-          // const responseCredit = await axios({
-          //   method: "GET",
-          //   url: `https://api.themoviedb.org/3/movie/${movie_id}/credits`,
-          //   params: {
-          //     format: "json",
-          //     api_key: "9279e74f93d44d00c0b5afd5efff4065",
-          //   },
-          // });
-          // const responseVideo = await axios({
-          //   method: "GET",
-          //   url: `https://api.themoviedb.org/3/movie/${movie_id}/videos`,
-          //   params: {
-          //     format: "json",
-          //     api_key: "9279e74f93d44d00c0b5afd5efff4065",
-          //   },
-          // });
-          console.log("response", response);
           movie.genreDetails = response.data.genres;
           movie.durationDetails = response.data.runtime;
           movie.castDetails = response.data.credits.cast;
@@ -93,18 +71,29 @@ const UserContextProvider = ({ children }) => {
               profile_path: "/.jpg",
             },
           ];
+          movie.videoDetails = [
+            {
+              id: "",
+              iso_3166_1: "US",
+              iso_639_1: "en",
+              key: "",
+              name: "Special Features Preview",
+              official: true,
+              published_at: "",
+              site: "YouTube",
+              size: 1080,
+              type: "Behind the Scenes",
+            },
+          ];
         }
       };
-
       fetchGenres(movie.id);
     });
     setMovies(newMovies);
   };
-
   const removeFromNewFav = (movie) => {
     remove(ref(db, "favlist/" + movie.id));
   };
-
   const saveNewFav = (movie) => {
     set(ref(db, "favlist/" + movie.id), {
       name: movie.name || movie.title,
@@ -113,7 +102,6 @@ const UserContextProvider = ({ children }) => {
       duration: movie.durationDetails,
     });
   };
-
   return (
     // the Provider gives access to the context to its children
     <UserContext.Provider

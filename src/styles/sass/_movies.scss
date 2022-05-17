@@ -1,14 +1,12 @@
 //Main
-
-
-.movieContainer {    
+.movie-container {    
     flex: 1 1 250px;
     margin: 15px 15px;
     padding: 15px;
     display: flex;  
     background-color: $backgroundDark;
     justify-content: space-between;
-  .moviePoster {
+    .movie-poster {
         width: 35%;
         height: auto;
         display: flex;
@@ -18,14 +16,14 @@
             object-fit: contain;
         }
     }
-    .movieDetails {
+    .movie-details {
         width: 350px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-around;
         padding-left: 10px;
-        .title{
+        .title {
             width: 100%;
             display: flex;
             align-items: center;
@@ -38,13 +36,12 @@
                 margin-bottom: 0;
             }
         }
-        
-        p{
+        p {
             @include bodyFont;
             color: $primaryYellow;
             margin-bottom: 0;
         }
-        .buttonsContainer {
+        .buttons-container {
             max-width: 90%;
             display: flex;
             justify-content: space-around;
@@ -64,7 +61,7 @@
                     transition-property: transform;
                     transform: scale(1.1);
                 }
-                  }
+            }
         }
         .iconAdd {
             color: $primaryYellow;
@@ -74,16 +71,5 @@
             color: $primaryRed;
             cursor: pointer;
         }
-       
     }
-    
 }
-
-@media (max-width: 1220px) {
-    .movieContainer{
-        justify-content: flex-start;
-    }
-    
-    
-    }
-

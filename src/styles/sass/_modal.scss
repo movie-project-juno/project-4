@@ -1,5 +1,5 @@
 //Modal
-.movieModal{
+.movie-modal{
     position: fixed;
     height: 100%;
     width: 100%;
@@ -7,7 +7,7 @@
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    .moviesModalContainer{
+    .movies-modal-container{
         position: relative;
         width: 100%;
         height: 550px;
@@ -16,7 +16,7 @@
         background-color: $backgroundDark;
         border: 1px solid black;
         margin: auto;
-        .closeButton {
+        .close-button {
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -31,9 +31,7 @@
             border: 1px solid $primaryYellow;
             background-color: $primaryRed;
         }
-        
-        }
-        .modalContent {
+        .modal-content {
             width: 90%;
             height: 90%;
             padding: 20px;
@@ -41,70 +39,65 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            .modalDetails {
+            .modal-video {
+                display: flex;
+            }
+            .modal-details {
                 display: flex;
                 flex-direction: column;
                 width: 90%;
+                padding-left: 50px;
                 p, h3{
                     color: $primaryYellow;
                 }
-                .buttonsContainer {
+                .modal-genre {
+                    margin: 10px 0;
+                }
+                .movie-detail-list {
+                    line-height: 5px;
+                }
+                .description {
+                    font-weight: bold;
+                    padding-right: 6px;
+                }
+                .language {
+                    text-transform: uppercase;
+                }
+                .cast {
+                    color: $primaryYellow;
+                }
+                .cast-list {
+                    line-height: 20px;
+                    display: inline;
+                    padding-left: 10px;
+                }
+                .cast-list-order {
+                    margin-top: -28.5px;
+                }
+                .buttons-container {
                     width: 100%;
                     display: flex;
-                    justify-content: space-evenly;
-                    margin: 20px 0;
+                    margin-top: 60px;
                     button{
                         @include buttons;
                         background-color: $primaryBlue;
                         color: $backgroundDark;
-                &:hover,
-                &:focus,
-                &:active{
-                    display: inline-block;
-                    vertical-align: middle;
-                    transform: translateZ(0);
-                    box-shadow: 0 0 5px rgba(0, 0, 0, 5);
-                    backface-visibility: hidden;
-                    -moz-osx-font-smoothing: grayscale;
-                    transition-duration: 0.3s;
-                    transition-property: transform;
-                    transform: scale(1.1);
-                }
-                        
+                    }
+                    &:hover,
+                    &:focus,
+                    &:active{
+                        display: inline-block;
+                        vertical-align: middle;
+                        transform: translateZ(0);
+                        box-shadow: 0 0 5px rgba(0, 0, 0, 5);
+                        backface-visibility: hidden;
+                        -moz-osx-font-smoothing: grayscale;
+                        transition-duration: 0.3s;
+                        transition-property: transform;
+                        transform: scale(1.1);
                     }
                 }
+            }
         }
-        
     }
-}
-
-.modalGenre {
-    margin: 10px 0;
-}
-
-.movieDetailList {
-    line-height: 5px;
-}
-
-.description {
-    font-weight: bold;
-    padding-right: 6px;
-}
-
-.language {
-    text-transform: uppercase;
-}
-
-.cast {
-    color: $primaryYellow;
-}
-
-.castList {
-    line-height: 20px;
-    display: inline;
-    padding-left: 10px;
-}
-
-.castListOrder {
-    margin-top: -28.5px;
 }

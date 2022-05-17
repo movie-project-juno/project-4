@@ -14,12 +14,6 @@ const App = () => {
       <Header />
       <UserContextProvider>
         <SelectMovies />
-        {/* <NaturalList />
-          <SelectMovie/>
-        <UserDBContextProvider>
-          <Lists />
-        </UserDBContextProvider> */}
-        {/* <SearchBar /> */}
         <Movies />
       </UserContextProvider>
       <Footer />

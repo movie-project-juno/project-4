@@ -5,7 +5,6 @@ import MovieModal from "./MovieModal";
 const NaturalList = () => {
   const { movies, favList, saveNewFav, removeFromNewFav } =
     useContext(UserContext);
-
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedTime, setSelectedTime] = useState(0);
   const [favGenres, setFavGenres] = useState([]);
@@ -17,7 +16,6 @@ const NaturalList = () => {
   useEffect(() => {
     if (favList && Object.keys(favList).length && movies.length) {
       const genreArray = [];
-
       for (const favMovie of Object.values(favList)) {
         if (favMovie.genres && favMovie.genres[0]) {
           genreArray.push(favMovie.genres[0].name);
@@ -28,19 +26,15 @@ const NaturalList = () => {
   }, [movies, favList]);
 
   //Capture changes from dropdown menus below and update each of their states 👇👇👇
-
   // Pass updated States to Index.jsk to use as search Params for API
-
   const selectedGenreHandler = (event) => {
     const selectedGenre = event.target.value;
     setSelectedGenre(selectedGenre);
   };
-
   const selectedTimeHandler = (event) => {
     const selectedTime = event.target.value;
     setSelectedTime(selectedTime);
   };
-
   const findBestMovie = () => {
     const filteredMovies = movies.filter((movie) => {
       const movieGenre = movie.genreDetails[0]?.name;
@@ -62,7 +56,7 @@ const NaturalList = () => {
     setOpenModal(true);
   };
   return (
-    <>
+    <aside>
       <form
         id="NLForm"
         className="NLForm"
@@ -75,7 +69,6 @@ const NaturalList = () => {
           <option value="" hidden>
             Choose...
           </option>
-
           {favGenres.length > 0 ? (
             favGenres.map((genre) => (
               <option key={genre} value={genre}>
@@ -108,7 +101,7 @@ const NaturalList = () => {
         saveNewFav={saveNewFav}
         removeFromNewFav={removeFromNewFav}
       />
-    </>
+    </aside>
   );
 };
 

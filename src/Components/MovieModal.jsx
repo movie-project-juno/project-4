@@ -13,23 +13,36 @@ const MovieModal = ({
   return (
     <>
       {openModal ? (
-        <div className="movieModal">
-          <div className="moviesModalContainer">
-            <div className="closeButton" onClick={() => setOpenModal(false)}>
+        <div className="movie-modal">
+          <div className="movies-modal-container">
+            <div className="close-button" onClick={() => setOpenModal(false)}>
               X
             </div>
-            <article key={movie.id} className="modalContent">
-              <figure className="moviePosterModal">
-                <img
-                  src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
-                  alt={movie.name || movie.title}
-                  className="imageModal"
-                />
-              </figure>
-
-              <div className="modalDetails">
+            <article key={movie.id} className="modal-content">
+              <div className="media">
+                <figure className="moviePosterModal">
+                  <img
+                    src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+                    alt={movie.name || movie.title}
+                    className="imageModal"
+                  />
+                </figure>
+                <div className="modal-video">
+                  <iframe
+                    width="300"
+                    height="200"
+                    src={`https://www.youtube.com/embed/${movie.videoDetails[0].key}`}
+                    className="trailer"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
+              <div className="modal-details">
                 <h3>{movie.name || movie.title}</h3>
-                <p className="modalGenre">
+                <p className="modal-genre">
                   {movie.genreDetails[0].name
                     ? movie.genreDetails[0].name
                     : null}
@@ -38,7 +51,7 @@ const MovieModal = ({
                 <div className="modalText">
                   <p>{movie.overview}</p>
                 </div>
-                <div className="movieDetailList">
+                <div className=".movie-detail-list">
                   <p>
                     <span className="description">Runtime:</span>{" "}
                     {movie.durationDetails} minutes
@@ -51,15 +64,14 @@ const MovieModal = ({
                     <span className="description">Release date:</span>{" "}
                     {movie.release_date}
                   </p>
-
                   <div className="cast">
                     <p>
                       <span className="description">Cast:</span>
                     </p>
-                    <ul className="castListOrder">
+                    <ul className="cast-list-order">
                       {movie.castDetails.slice(0, 3).map((cast, index) => {
                         return (
-                          <li key={index} className="castList">
+                          <li key={index} className="cast-list">
                             {cast.name}
                           </li>
                         );
@@ -67,7 +79,7 @@ const MovieModal = ({
                     </ul>
                   </div>
                 </div>
-                <div className="buttonsContainer">
+                <div className="buttons-container">
                   {inFavlist ? (
                     <button onClick={(event) => removeFromNewFav(movie)}>
                       Remove
@@ -76,18 +88,6 @@ const MovieModal = ({
                     <button onClick={(event) => saveNewFav(movie)}>Add</button>
                   )}
                 </div>
-                {
-                  <iframe
-                    width="560"
-                    height="315"
-                    src={`https://www.youtube.com/embed/${movie.videoDetails[0].key}`}
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
-                }
-                )
               </div>
             </article>
           </div>
