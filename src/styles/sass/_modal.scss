@@ -31,8 +31,6 @@
             border: 1px solid $primaryYellow;
             background-color: $primaryRed;
         }
-        
-        }
         .modalContent {
             width: 90%;
             height: 90%;
@@ -84,20 +82,21 @@
                         @include buttons;
                         background-color: $primaryBlue;
                         color: $backgroundDark;
-                &:hover,
-                &:focus,
-                &:active{
-                    display: inline-block;
-                    vertical-align: middle;
-                    transform: translateZ(0);
-                    box-shadow: 0 0 5px rgba(0, 0, 0, 5);
-                    backface-visibility: hidden;
-                    -moz-osx-font-smoothing: grayscale;
-                    transition-duration: 0.3s;
-                    transition-property: transform;
-                    transform: scale(1.1);
+                    }
+                    &:hover,
+                    &:focus,
+                    &:active{
+                        display: inline-block;
+                        vertical-align: middle;
+                        transform: translateZ(0);
+                        box-shadow: 0 0 5px rgba(0, 0, 0, 5);
+                        backface-visibility: hidden;
+                        -moz-osx-font-smoothing: grayscale;
+                        transition-duration: 0.3s;
+                        transition-property: transform;
+                        transform: scale(1.1);
+                    }
                 }
-            }
             }
         }
     }
