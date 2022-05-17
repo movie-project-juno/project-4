@@ -53,23 +53,6 @@ const UserContextProvider = ({ children }) => {
               api_key: "9279e74f93d44d00c0b5afd5efff4065",
             },
           });
-          // const responseCredit = await axios({
-          //   method: "GET",
-          //   url: `https://api.themoviedb.org/3/movie/${movie_id}/credits`,
-          //   params: {
-          //     format: "json",
-          //     api_key: "9279e74f93d44d00c0b5afd5efff4065",
-          //   },
-          // });
-          // const responseVideo = await axios({
-          //   method: "GET",
-          //   url: `https://api.themoviedb.org/3/movie/${movie_id}/videos`,
-          //   params: {
-          //     format: "json",
-          //     api_key: "9279e74f93d44d00c0b5afd5efff4065",
-          //   },
-          // });
-          console.log("response", response);
           movie.genreDetails = response.data.genres;
           movie.durationDetails = response.data.runtime;
           movie.castDetails = response.data.credits.cast;
@@ -91,6 +74,20 @@ const UserContextProvider = ({ children }) => {
               original_name: "",
               popularity: 0,
               profile_path: "/.jpg",
+            },
+          ];
+          movie.videoDetails = [
+            {
+              id: "",
+              iso_3166_1: "US",
+              iso_639_1: "en",
+              key: "",
+              name: "Special Features Preview",
+              official: true,
+              published_at: "",
+              site: "YouTube",
+              size: 1080,
+              type: "Behind the Scenes",
             },
           ];
         }

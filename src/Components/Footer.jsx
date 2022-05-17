@@ -7,10 +7,10 @@ const Footer = () => {
 
         <p>
           Created by:
-          <a href="https://github.com/rodgersajb" className="name"> Alex Rodgers </a>
-          <a href="https://github.com/priscilamattos" className="name"> | Priscila Mattos </a>
-          <a href="https://github.com/sophiakim1" className="name"> | Sophia Kim </a>
-          <a href="https://github.com/tdmitchell" className="name"> | Theo
+          <a href="https://github.com/rodgersajb" className="name"> Alex Rodgers </a> |
+          <a href="https://github.com/priscilamattos" className="name"> Priscila Mattos </a> |
+          <a href="https://github.com/sophiakim1" className="name"> Sophia Kim </a> |
+          <a href="https://github.com/tdmitchell" className="name"> Theo
             Mitchell </a>
         </p>
 
