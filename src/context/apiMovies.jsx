@@ -21,11 +21,11 @@ const UserContextProvider = ({ children }) => {
       const data = snapshot.val();
       setFavList(data);
     });
-    
+
     fetchMovies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   const fetchMovies = async () => {
     const {
       data: { results: movies },
@@ -36,11 +36,10 @@ const UserContextProvider = ({ children }) => {
         format: "json",
         api_key: "9279e74f93d44d00c0b5afd5efff4065",
       },
-      
     });
     getGenres(movies);
   };
-  
+
   const getGenres = (movies) => {
     const newMovies = [...movies];
     newMovies.forEach((movie) => {
@@ -48,7 +47,7 @@ const UserContextProvider = ({ children }) => {
         try {
           const response = await axios({
             method: "GET",
-            url: `https://api.themoviedb.org/3/movie/${movie_id}?append_to_response=videos, credits`,
+            url: `https://api.themoviedb.org/3/movie/${movie_id}?append_to_response=videos,credits`,
             params: {
               format: "json",
               api_key: "9279e74f93d44d00c0b5afd5efff4065",
@@ -70,32 +69,33 @@ const UserContextProvider = ({ children }) => {
           //     api_key: "9279e74f93d44d00c0b5afd5efff4065",
           //   },
           // });
+          console.log("response", response);
           movie.genreDetails = response.data.genres;
           movie.durationDetails = response.data.runtime;
-          movie.castDetails = response.data.cast;
-          movie.videoDetails = response.data.results;
+          movie.castDetails = response.data.credits.cast;
+          movie.videoDetails = response.data.videos.results;
         } catch (error) {
           movie.genreDetails = [{ id: 0, name: "General" }];
           movie.durationDetails = 120;
-          movie.castDetails = [{ 
-            adult: false, 
-            cast_id: 0, 
-            character: "", 
-            credit_id: "", 
-            gender: 0, 
-            id: 0, 
-            known_for_department: "Acting", 
-            name: "",
-            order: 0,
-            original_name: "",
-            popularity: 0,
-            profile_path: "/.jpg"
-          }];
-
-          // console.log("Error fetching movie genre", movie, error);
+          movie.castDetails = [
+            {
+              adult: false,
+              cast_id: 0,
+              character: "",
+              credit_id: "",
+              gender: 0,
+              id: 0,
+              known_for_department: "Acting",
+              name: "",
+              order: 0,
+              original_name: "",
+              popularity: 0,
+              profile_path: "/.jpg",
+            },
+          ];
         }
       };
-      
+
       fetchGenres(movie.id);
     });
     setMovies(newMovies);
