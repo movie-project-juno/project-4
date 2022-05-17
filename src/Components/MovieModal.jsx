@@ -19,16 +19,18 @@ const MovieModal = ({
               X
             </div>
             <article key={movie.id} className="modalContent">
-              <figure className="moviePoster">
+              <figure className="moviePosterModal">
                 <img
                   src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
                   alt={movie.name || movie.title}
                 />
               </figure>
+
+
               <div className="modalDetails">
                 <h3>{movie.name || movie.title}</h3>
                 <p className="modalGenre">{movie.genreDetails[0].name ? movie.genreDetails[0].name : null }</p>
-                <p>⭐ {movie.vote_average}/10</p>
+                <p className="modalRating">⭐ {movie.vote_average}/10</p>
                 <div className="modalText">
                   <p>{movie.overview}</p>
                 </div>
@@ -36,28 +38,11 @@ const MovieModal = ({
                   <p><span className="description">Runtime:</span> {movie.durationDetails} minutes</p>
                   <p><span className="description">Language:</span> <span className="language">{movie.original_language}</span></p>
                   <p><span className="description">Release date:</span> {movie.release_date}</p>
-                  <p><span className="description">Production:</span> {movie.productionCompany[0].name}</p>
-
-                  <div className="crew">
-                    <p><span className="description">Director:</span>
-                    </p>
-                    <ul>{movie.crewDetails.slice(0, 3).map((crew, index) => {
-                      return (
-                        <li key={index} className="castList">
-                          {crew.name}
-                          {crew.job}
-                        </li>
-                      )
-                    })}</ul>
-                  </div>
-
-                  {/* <p><span className="description">Director:</span>{movie.crewDetails}</p> */}
-
 
                   <div className="cast">
                   <p><span className="description">Cast:</span>
                   </p>
-                    <ul>{movie.castDetails.slice(0,3).map((cast, index) => {
+                    <ul className="castListOrder">{movie.castDetails.slice(0,3).map((cast, index) => {
                       return(
                         <li key={index} className="castList">
                           {cast.name}
@@ -65,6 +50,7 @@ const MovieModal = ({
                       )
                     })}</ul>
                   </div>
+
                 </div>
                 <div className="buttonsContainer">
                   {inFavlist ? (
@@ -75,6 +61,12 @@ const MovieModal = ({
                     <button onClick={(event) => saveNewFav(movie)}>Add</button>
                   )}
                 </div>
+                {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/{movie.videoDetails[0].key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+
+                {/* <button onClick="https://www.youtube.com/watch?v={movie.videoDetails[0].key}">Watch trailer</button>  */}
+
+
+
               </div>
             </article>
           </div>

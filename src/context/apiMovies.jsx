@@ -74,10 +74,7 @@ const UserContextProvider = ({ children }) => {
           movie.durationDetails = response.data.runtime;
           movie.productionCompany = response.data.production_companies;
           movie.castDetails = responseCredit.data.cast;
-          movie.crewDetails = responseCredit.data.crew;
-          movie.videoDetails = responseCredit.data.results;
-          console.log("EH", responseVideo);
-          console.log("CREWWW", movie.crewDetails)
+          movie.videoDetails = responseVideo.data.results;
         } catch (error) {
           movie.genreDetails = [{ id: 0, name: "General" }];
           movie.durationDetails = 120;
