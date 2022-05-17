@@ -19,14 +19,14 @@ const Movies = () => {
     return movies.map((movie) => {
       const isInFavList = favList && !!favList[movie.id];
       return (
-        <article key={movie.id} className="movieContainer">
-          <div className="moviePoster">
+        <article key={movie.id} className="movie-container">
+          <div className="movie-poster">
             <img
               src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
               alt={movie.original_title}
             />
           </div>
-          <div className="movieDetails">
+          <div className="movie-details">
             <div className="title">
               <h2>
                 {movie.original_title || movie.original_name || movie.name}
@@ -52,7 +52,7 @@ const Movies = () => {
             </p>
             <p>Rate: {movie.vote_average}</p>
             {movie.genreDetails && <p>{movie.genreDetails[0].name}</p>}
-            <div className="buttonsContainer">
+            <div className="buttons-container">
               <button onClick={() => toggleModal(movie)} className="hover">
                 Read More
               </button>

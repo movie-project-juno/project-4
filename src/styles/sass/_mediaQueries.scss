@@ -1,23 +1,33 @@
 // // Media Query styles
-
 @media (max-width: 680px) {
-    .movieModal {
-        .moviesModalContainer {
+    .movie-modal {
+        .movies-modal-container {
             height: 100%;
-            .modalContent {
+            .modal-content {
                 display: flex;
                 flex-direction: column;
+            }
+            .modal-details {
+                p {
+                    margin: 5px;
+                }
+                .cast{
+                    .cast-list {
+                        padding-left: 6px;
+                    }
+                    .cast-list-order {
+                        margin-top: -24px;
+                    }
+                }
             }
         }
     }
 }
-
 @media (max-width: 550px) {
     .title h2 {
         width: 60%;
     }
 }
-
 @media (max-width: 440px) {
     .title h2 {
         width: 10%;

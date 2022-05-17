@@ -13,12 +13,12 @@ const MovieModal = ({
   return (
     <>
       {openModal ? (
-        <div className="movieModal">
-          <div className="moviesModalContainer">
-            <div className="closeButton" onClick={() => setOpenModal(false)}>
+        <div className="movie-modal">
+          <div className="movies-modal-container">
+            <div className="close-button" onClick={() => setOpenModal(false)}>
               X
             </div>
-            <article key={movie.id} className="modalContent">
+            <article key={movie.id} className="modal-content">
               <div className="media">
                 <figure className="moviePosterModal">
                   <img
@@ -27,7 +27,7 @@ const MovieModal = ({
                     className="imageModal"
                   />
                 </figure>
-                <div className="modalVideo">
+                <div className="modal-video">
                   <iframe
                     width="300"
                     height="200"
@@ -40,9 +40,9 @@ const MovieModal = ({
                   ></iframe>
                 </div>
               </div>
-              <div className="modalDetails">
+              <div className="modal-details">
                 <h3>{movie.name || movie.title}</h3>
-                <p className="modalGenre">
+                <p className="modal-genre">
                   {movie.genreDetails[0].name
                     ? movie.genreDetails[0].name
                     : null}
@@ -51,7 +51,7 @@ const MovieModal = ({
                 <div className="modalText">
                   <p>{movie.overview}</p>
                 </div>
-                <div className="movieDetailList">
+                <div className=".movie-detail-list">
                   <p>
                     <span className="description">Runtime:</span>{" "}
                     {movie.durationDetails} minutes
@@ -68,10 +68,10 @@ const MovieModal = ({
                     <p>
                       <span className="description">Cast:</span>
                     </p>
-                    <ul className="castListOrder">
+                    <ul className="cast-list-order">
                       {movie.castDetails.slice(0, 3).map((cast, index) => {
                         return (
-                          <li key={index} className="castList">
+                          <li key={index} className="cast-list">
                             {cast.name}
                           </li>
                         );
@@ -79,7 +79,7 @@ const MovieModal = ({
                     </ul>
                   </div>
                 </div>
-                <div className="buttonsContainer">
+                <div className="buttons-container">
                   {inFavlist ? (
                     <button onClick={(event) => removeFromNewFav(movie)}>
                       Remove

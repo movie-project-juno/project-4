@@ -1,5 +1,5 @@
 //Modal
-.movieModal{
+.movie-modal{
     position: fixed;
     height: 100%;
     width: 100%;
@@ -7,7 +7,7 @@
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    .moviesModalContainer{
+    .movies-modal-container{
         position: relative;
         width: 100%;
         height: 550px;
@@ -16,7 +16,7 @@
         background-color: $backgroundDark;
         border: 1px solid black;
         margin: auto;
-        .closeButton {
+        .close-button {
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -31,7 +31,7 @@
             border: 1px solid $primaryYellow;
             background-color: $primaryRed;
         }
-        .modalContent {
+        .modal-content {
             width: 90%;
             height: 90%;
             padding: 20px;
@@ -39,10 +39,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            .modalVideo {
+            .modal-video {
                 display: flex;
             }
-            .modalDetails {
+            .modal-details {
                 display: flex;
                 flex-direction: column;
                 width: 90%;
@@ -50,10 +50,10 @@
                 p, h3{
                     color: $primaryYellow;
                 }
-                .modalGenre {
+                .modal-genre {
                     margin: 10px 0;
                 }
-                .movieDetailList {
+                .movie-detail-list {
                     line-height: 5px;
                 }
                 .description {
@@ -66,15 +66,15 @@
                 .cast {
                     color: $primaryYellow;
                 }
-                .castList {
+                .cast-list {
                     line-height: 20px;
                     display: inline;
                     padding-left: 10px;
                 }
-                .castListOrder {
+                .cast-list-order {
                     margin-top: -28.5px;
                 }
-                .buttonsContainer {
+                .buttons-container {
                     width: 100%;
                     display: flex;
                     margin-top: 60px;

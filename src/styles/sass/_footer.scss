@@ -14,14 +14,11 @@ footer {
         text-align: center;
         font-weight: 600;
     }
-
     .name {
         text-decoration: none;
         color: $primaryYellow; 
     }
-
     .name:hover, .name:focus {
         color: $backgroundDark;    
     }
-    
 }
