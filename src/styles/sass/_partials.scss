@@ -7,7 +7,7 @@ $backgroundDark: #212020;
 @mixin headings {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 600;
-    font-size: 48px;
+    font-size: 72px;
 }
 
 @mixin bodyFont {
@@ -17,103 +17,22 @@ $backgroundDark: #212020;
 }
 
 @mixin buttons {
-    @include bodyFont;
-                height: 40px;
-                width: 150px;
-                color: $primaryYellow;
-                font-weight: 600;
-                background-color: $primaryRed   ;
-                border: none;
-                cursor: pointer;
-                   }
-
-
-
-//Main
-body{
-    background-image: url(../../../public/images/background.png);
-}
-
-.wrapper {
-    max-width: 1280px;
-    margin: 0 auto;
-}
-.container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.movieContainer {    
-    flex: 1 1 250px;
-    margin: 15px 15px;
-    padding: 15px;
-    display: flex;  
-    background-color: $backgroundDark;
-  .moviePoster {
-        width: 35%;
-        height: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        img{
-            object-fit: contain;
-        }
+    @include bodyFont{
+        height: 40px;
+        width: 150px;
+        color: $primaryYellow;
+        font-weight: 600;
+        background-color: $primaryRed ;
+        border: none;
+        cursor: pointer;
     }
-    .movieDetails {
-        width: 350px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
-        padding-left: 10px;
-        .title{
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            h2 {
-                font-family: "Josefin Sans", sans-serif;
-                font-weight: 600;
-                font-size: 28px;
-                color: #B3D5DF;
-            }
-        }
-        
-        p{
-            @include bodyFont;
-            color: $primaryYellow;
-        }
-        .buttonsContainer {
-            max-width: 90%;
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-            button {
-                @include buttons;
-                &:hover,
-                &:focus,
-                &:active{
-                    display: inline-block;
-                    vertical-align: middle;
-                    transform: translateZ(0);
-                    box-shadow: 0 0 5px rgba(0, 0, 0, 5);
-                    backface-visibility: hidden;
-                    -moz-osx-font-smoothing: grayscale;
-                    transition-duration: 0.3s;
-                    transition-property: transform;
-                    transform: scale(1.1);
-                }
-            }
-        }
-        .trailer {
-            margin-left: 14px;
-        }
-        .iconAdd {
-            color: $primaryYellow;
-            cursor: pointer;
-        }
+    body{
+        background-image: url(../../../public/images/background.png);
     }
-    
+    .iconAdd {
+    color: $primaryYellow;
+    cursor: pointer;
+    }
 }
 
 //Modal
@@ -149,8 +68,7 @@ body{
             border: 1px solid $primaryYellow;
             background-color: $primaryRed;
         }
-        
-        }
+    }
         .modalContent {
             width: 90%;
             height: 90%;
@@ -169,44 +87,17 @@ body{
                 p, h3{
                     color: $primaryYellow;
                 }
-                .buttonsContainer {
-                    width: 100%;
+                .container {
                     display: flex;
-                    justify-content: space-evenly;
-                    margin: 20px 0;
-                    button{
-                        @include buttons;
-                        background-color: $primaryBlue;
-                        color: $backgroundDark;
-                &:hover,
-                &:focus,
-                &:active{
-                    display: inline-block;
-                    vertical-align: middle;
-                    transform: translateZ(0);
-                    box-shadow: 0 0 5px rgba(0, 0, 0, 5);
-                    backface-visibility: hidden;
-                    -moz-osx-font-smoothing: grayscale;
-                    transition-duration: 0.3s;
-                    transition-property: transform;
-                    transform: scale(1.1);
+                    flex-wrap: wrap;
                 }
-                        
-                    }
-                }
+            }
         }
-        
-    }
 }
 
-.NLForm{
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: auto;
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 20px;
-}
+
+
+
 
 .modalGenre {
     border: 2px solid white;
