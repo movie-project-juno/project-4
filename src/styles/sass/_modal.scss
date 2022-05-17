@@ -9,8 +9,8 @@
     display: flex;
     .moviesModalContainer{
         position: relative;
-        width: 60%;
-        height: 750px;
+        width: 100%;
+        height: 550px;
         min-width: 300px;
         min-height: 400px;
         background-color: $backgroundDark;
@@ -39,7 +39,6 @@
             padding: 20px;
             margin: auto;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             .modalDetails {
@@ -77,4 +76,35 @@
         }
         
     }
+}
+
+.modalGenre {
+    margin: 10px 0;
+}
+
+.movieDetailList {
+    line-height: 5px;
+}
+
+.description {
+    font-weight: bold;
+    padding-right: 6px;
+}
+
+.language {
+    text-transform: uppercase;
+}
+
+.cast {
+    color: $primaryYellow;
+}
+
+.castList {
+    line-height: 20px;
+    display: inline;
+    padding-left: 10px;
+}
+
+.castListOrder {
+    margin-top: -28.5px;
 }

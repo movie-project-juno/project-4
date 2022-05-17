@@ -70,6 +70,7 @@ const Movies = () => {
       );
     });
   };
+  
   //Render movie list
   return (
     <main className="wrapper container">
@@ -85,5 +86,4 @@ const Movies = () => {
     </main>
   );
 };
-
 export default Movies;

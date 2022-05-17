@@ -1,0 +1,43 @@
+// Media Query styles
+@media (max-width: 1200px) {
+    .modalGenre {
+        width: 9%;
+    }
+}
+
+@media (max-width: 950px) {
+    .modalGenre {
+        width: 10%;
+    }
+}
+
+@media (max-width: 920px) {
+    .modalGenre {
+        width: 15%;
+    }
+}
+
+@media (max-width: 750px) {
+    .modalGenre {
+        width: 20%;
+    }
+}
+
+@media (max-width: 650px) {
+    .title h2 {
+        width: 60%;
+    }
+}
+
+@media (max-width: 440px) {
+    .title h2 {
+        width: 10%;
+    }
+}
+
+
+@media (min-width: 320px) {
+    h1 {
+        text-align: center;
+    }
+}
