@@ -19,28 +19,27 @@ const MovieModal = ({
               X
             </div>
             <article key={movie.id} className="modalContent">
-<div className="media">
-              <figure className="moviePosterModal">
-                <img
-                  src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
-                  alt={movie.name || movie.title}
-                  className="imageModal"
-                />
-              </figure>
-
-              <div className="modalVideo">
-                <iframe
-                  width="300"
-                  height="200"
-                  src={`https://www.youtube.com/embed/${movie.videoDetails[0].key}`}
-                  className="trailer"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
+              <div className="media">
+                <figure className="moviePosterModal">
+                  <img
+                    src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+                    alt={movie.name || movie.title}
+                    className="imageModal"
+                  />
+                </figure>
+                <div className="modalVideo">
+                  <iframe
+                    width="300"
+                    height="200"
+                    src={`https://www.youtube.com/embed/${movie.videoDetails[0].key}`}
+                    className="trailer"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </div>
-</div>
               <div className="modalDetails">
                 <h3>{movie.name || movie.title}</h3>
                 <p className="modalGenre">
@@ -65,7 +64,6 @@ const MovieModal = ({
                     <span className="description">Release date:</span>{" "}
                     {movie.release_date}
                   </p>
-
                   <div className="cast">
                     <p>
                       <span className="description">Cast:</span>
@@ -80,8 +78,7 @@ const MovieModal = ({
                       })}
                     </ul>
                   </div>
-                  </div>
-
+                </div>
                 <div className="buttonsContainer">
                   {inFavlist ? (
                     <button onClick={(event) => removeFromNewFav(movie)}>
@@ -92,9 +89,6 @@ const MovieModal = ({
                   )}
                 </div>
               </div>
-
-
-
             </article>
           </div>
         </div>

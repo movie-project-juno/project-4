@@ -1,7 +1,6 @@
 import { faHeart, faHeartCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
-
 import { UserContext } from "../context/apiMovies";
 import MovieModal from "./MovieModal";
 
@@ -9,15 +8,12 @@ import MovieModal from "./MovieModal";
 const Movies = () => {
   const [movie, setMovie] = useState({});
   const [openModal, setOpenModal] = useState(false);
-
   const { movies, saveNewFav, removeFromNewFav, favList } =
     useContext(UserContext);
-
   const toggleModal = (movie) => {
     setMovie(movie);
     setOpenModal(true);
   };
-  console.log(movie);
   // Looping and rendering a list of movies
   const renderMovies = () => {
     return movies.map((movie) => {
@@ -51,16 +47,12 @@ const Movies = () => {
                 />
               )}
             </div>
-
             <p>
               {movie.original_language}, Release date: {movie.release_date}
             </p>
-
             <p>Rate: {movie.vote_average}</p>
             {movie.genreDetails && <p>{movie.genreDetails[0].name}</p>}
-
             <div className="buttonsContainer">
-              {/* <button>Watch trailer</button> */}
               <button onClick={() => toggleModal(movie)} className="hover">
                 Read More
               </button>
@@ -70,7 +62,6 @@ const Movies = () => {
       );
     });
   };
-
   //Render movie list
   return (
     <main className="wrapper container">
