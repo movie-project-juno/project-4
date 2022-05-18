@@ -1,4 +1,5 @@
-import { useState, useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+
 import { UserContext } from "../context/apiMovies";
 import MovieModal from "./MovieModal";
 
@@ -9,7 +10,6 @@ const NaturalList = () => {
   const [selectedTime, setSelectedTime] = useState(0);
   const [favGenres, setFavGenres] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState([]);
-  const [isGoodMatch, setIsGoodMatch] = useState(null);
   const [openModal, setOpenModal] = useState(false);
 
   //   creates an array with unique genres from the fav movies
@@ -47,11 +47,9 @@ const NaturalList = () => {
       setSelectedMovie(
         filteredMovies[Math.floor(Math.random() * filteredMovies.length)]
       );
-      setIsGoodMatch(true);
     } else {
       //show a random movie from all movies
       setSelectedMovie(movies[Math.floor(Math.random() * movies.length)]);
-      setIsGoodMatch(false);
     }
     setOpenModal(true);
   };
