@@ -67,25 +67,22 @@
                     color: $primaryYellow;
                 }
                 .cast-list {
-                    line-height: 20px;
                     display: inline;
                     padding-left: 10px;
                 }
                 .cast-list-order {
-                    margin-top: -28.5px;
+                    margin-top: -33.5px;
                 }
                 .buttons-container {
                     width: 100%;
                     display: flex;
-                    margin-top: 60px;
                     button{
                         @include buttons;
                         background-color: $primaryBlue;
                         color: $backgroundDark;
-                    }
-                    &:hover,
-                    &:focus,
-                    &:active{
+                        &:hover,
+                         &:focus,
+                        &:active{
                         display: inline-block;
                         vertical-align: middle;
                         transform: translateZ(0);
@@ -96,6 +93,8 @@
                         transition-property: transform;
                         transform: scale(1.1);
                     }
+                    }
+                    
                 }
             }
         }

@@ -65,9 +65,7 @@ const MovieModal = ({
                     {movie.release_date}
                   </p>
                   <div className="cast">
-                    <p>
-                      <span className="description">Cast:</span>
-                    </p>
+                    <p className="description">Cast:</p>
                     <ul className="cast-list-order">
                       {movie.castDetails.slice(0, 3).map((cast, index) => {
                         return (
